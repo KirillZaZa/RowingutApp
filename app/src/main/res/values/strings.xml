@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RowingutApp</string>
+    <string name="onboarding_page_1_large">Добавляйте тренировки</string>
+    <string name="onboarding_page_1_small">Создавайте тренировки\nи совершенствуйтесь</string>
+    <string name="onboarding_page_2_large">Следите за результатами</string>
+    <string name="onboarding_page_2_small">Прогрессируйте и сохраняйте\nсвои достижения</string>
+    <string name="onboarding_page_3_large">Участвуйте в гонках</string>
+    <string name="onboarding_page_3_small">Покажите все, чему вы научились\nна тренировках</string>
+</resources>
