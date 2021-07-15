@@ -6,9 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.intro_page_1.*
-import kotlinx.android.synthetic.main.intro_page_2.*
-import kotlinx.android.synthetic.main.intro_page_3.*
 import ru.kirilldev.rowingutapp.R
 import kotlin.properties.Delegates
 

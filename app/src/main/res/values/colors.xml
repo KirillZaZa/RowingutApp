@@ -10,4 +10,6 @@
     <color name="text_color">#FFE9EDF5</color>
     <color name="mainBackground">#FF3D3D3D</color>
     <color name="mainPurple">#FFA55BDF</color>
+    <color name="regBlack">#FF242424</color>
+    <color name="text_color_grey">#FF7C7C7C</color>
 </resources>

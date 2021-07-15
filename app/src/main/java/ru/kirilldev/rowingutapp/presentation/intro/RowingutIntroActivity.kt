@@ -1,6 +1,6 @@
 package ru.kirilldev.rowingutapp.presentation.intro
 
-import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import kotlinx.android.synthetic.main.activity_onboarding.*
 import ru.kirilldev.rowingutapp.R
 import ru.kirilldev.rowingutapp.presentation.intro.viewpager.IntroViewPagerAdapter
+import ru.kirilldev.rowingutapp.presentation.registration.RegistrationActivity
 
 
 class RowingutIntroActivity : FragmentActivity(), View.OnClickListener{
@@ -17,6 +18,7 @@ class RowingutIntroActivity : FragmentActivity(), View.OnClickListener{
     private lateinit var pagerAdapter: IntroViewPagerAdapter
     private lateinit var bottombar: View
     private lateinit var buttonNext: View
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,7 +78,10 @@ class RowingutIntroActivity : FragmentActivity(), View.OnClickListener{
         if(viewpager.currentItem < 2){
             viewpager.currentItem++
         }else{
+            val intent = Intent(this, RegistrationActivity::class.java)
+            startActivity(intent)
             finish()
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
     }
 

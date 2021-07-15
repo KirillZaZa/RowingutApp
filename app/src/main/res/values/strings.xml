@@ -6,4 +6,6 @@
     <string name="onboarding_page_2_small">Прогрессируйте и сохраняйте\nсвои достижения</string>
     <string name="onboarding_page_3_large">Участвуйте в гонках</string>
     <string name="onboarding_page_3_small">Покажите все, чему вы научились\nна тренировках</string>
+    <string name="sign_in_text_large">Добро пожаловать</string>
+    <string name="sign_in_text_small">Войдите в учетную запись,\nчтобы продолжить</string>
 </resources>
