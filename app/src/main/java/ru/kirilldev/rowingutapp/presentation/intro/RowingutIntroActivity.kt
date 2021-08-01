@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
 import kotlinx.android.synthetic.main.activity_onboarding.*
 import ru.kirilldev.rowingutapp.R
-import ru.kirilldev.rowingutapp.presentation.intro.viewpager.IntroViewPagerAdapter
+import ru.kirilldev.rowingutapp.presentation.intro.adapter.IntroViewPagerAdapter
 import ru.kirilldev.rowingutapp.presentation.registration.RegistrationActivity
 
 
@@ -42,7 +42,7 @@ class RowingutIntroActivity : FragmentActivity(), View.OnClickListener{
 
     private fun setupViewPager(){
         viewpager = viewpager2
-        pagerAdapter = IntroViewPagerAdapter(this, )
+        pagerAdapter = IntroViewPagerAdapter(this)
         viewpager.adapter = pagerAdapter
 
     }

@@ -1,4 +1,4 @@
-package ru.kirilldev.rowingutapp.presentation.intro.viewpager
+package ru.kirilldev.rowingutapp.presentation.intro.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -8,11 +8,8 @@ import ru.kirilldev.rowingutapp.presentation.intro.SlideFragment
 class IntroViewPagerAdapter(fm: FragmentActivity) : FragmentStateAdapter(fm) {
 
 
-    companion object{
-        private const val NUM_PAGES = 3
-    }
 
-    override fun getItemCount(): Int  = NUM_PAGES
+    override fun getItemCount(): Int  = 3
 
     override fun createFragment(position: Int): Fragment {
         return SlideFragment.newInstance(position)

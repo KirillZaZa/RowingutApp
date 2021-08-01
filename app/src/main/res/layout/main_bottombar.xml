@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:background="@drawable/main_bottombar_background"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <ru.kirilldev.rowingutapp.ui.main.CheckableImageView
+        android:id="@+id/checkableImageView2"
+        style="@style/BottombarIcon"
+        android:layout_height="70dp"
+        android:src="@drawable/user_states"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/checkableImageView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <ru.kirilldev.rowingutapp.ui.main.CheckableImageView
+        android:id="@+id/checkableImageView"
+        style="@style/BottombarIcon"
+        android:layout_height="70dp"
+        android:src="@drawable/cup_states"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/checkableImageView3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/checkableImageView2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <ru.kirilldev.rowingutapp.ui.main.CheckableImageView
+        android:id="@+id/checkableImageView3"
+        style="@style/BottombarIcon"
+        android:layout_height="70dp"
+        android:src="@drawable/home_states"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/checkableImageView4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/checkableImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <ru.kirilldev.rowingutapp.ui.main.CheckableImageView
+        android:id="@+id/checkableImageView4"
+        style="@style/BottombarIcon"
+        android:layout_height="70dp"
+        android:src="@drawable/statistic_states"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/checkableImageView3"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteY="1dp" />
+
+
+</merge>

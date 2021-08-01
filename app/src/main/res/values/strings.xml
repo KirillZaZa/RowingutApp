@@ -8,4 +8,12 @@
     <string name="onboarding_page_3_small">Покажите все, чему вы научились\nна тренировках</string>
     <string name="sign_in_text_large">Добро пожаловать</string>
     <string name="sign_in_text_small">Войдите в учетную запись,\nчтобы продолжить</string>
+    <string name="hint_email">Почта</string>
+    <string name="hint_confirm_password">Подтвердите пароль</string>
+    <string name="hint_password">Пароль</string>
+    <string name="hint_forget_password">Забыли пароль?</string>
+    <string name="btn_sign_in">Войти</string>
+    <string name="btn_sign_up">Регистрация</string>
+    <string name="sign_up_text_large">Создать новый аккаунт</string>
+    <string name="sign_up_text_small">Заполните поля ниже,\nчтобы пройти регистрацию</string>
 </resources>
