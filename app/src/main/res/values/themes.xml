@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.RowingutApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimaryVariant">@color/mainPurple</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -19,8 +19,21 @@
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 
+    <style name="HeaderTextStyle">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/gilroy_medium</item>
+    </style>
+
+    <style name="SubtitleStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/gilroy_medium</item>
+        <item name="android:textColor">@color/subtitleColor</item>
+    </style>
+
     <style name="CustomTextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="boxStrokeColor">@color/mainOrange</item>
+        <item name="boxStrokeColor">@color/mainPurple</item>
         <item name="colorPrimary">@color/white</item>
         <item name="android:fontFamily">@font/gilroy_medium</item>
         <item name="boxStrokeWidth">2dp</item>
@@ -35,13 +48,29 @@
     </style>
 
     <style name="BottombarIcon">
-
         <item name="android:layout_width">56dp</item>
         <item name="android:layout_height">56dp</item>
         <item name="android:padding">16dp</item>
         <item name="android:tint">@color/tint_color</item>
         <item name="android:background">@drawable/ripple</item>
+    </style>
 
+
+    <style name="CardTextStyle">
+        <item name="fontFamily">@font/gilroy_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextButtonStyle">
+        <item name="android:textAlignment">center</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:paddingStart">64dp</item>
+        <item name="android:paddingEnd">64dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/gilroy_medium</item>
     </style>
 
 </resources>

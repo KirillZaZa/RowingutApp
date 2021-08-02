@@ -1,13 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
 }
 
 
 
 android {
     compileSdk 30
+
+
+    buildFeatures {
+         viewBinding true
+    }
 
     defaultConfig {
         applicationId "ru.kirilldev.rowingutapp"
@@ -39,6 +43,7 @@ android {
             languageVersion.set(JavaLanguageVersion.of(11))
         }
     }
+
 }
 
 dependencies {

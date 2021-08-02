@@ -7,15 +7,22 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFE9EDF5</color>
-    <color name="text_color">#FFE9EDF5</color>
+
     <color name="mainBackground">#FF3D3D3D</color>
-    <color name="mainOrange">#FFD77137</color>
+    <color name="mainPurple">#FF895EAD</color>
+    <color name="darkPurple">#FF592884</color>
+
     <color name="regBlack">#FF242424</color>
     <color name="bottombar_reg">#FF2F2F2F</color>
+
+    <color name="text_color">#FFE9EDF5</color>
     <color name="text_color_grey">#FF7C7C7C</color>
     <color name="text_input_normal">#FFC9C9C9</color>
-    <color name="text_input_activated">#FFD88137</color>
+    <color name="text_input_activated">#FF895EAD</color>
+
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#E9EDF5</color>
+
+    <color name="subtitleColor">#FFDCCFE6</color>
 
 
 </resources>

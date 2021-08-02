@@ -1,19 +1,38 @@
 <resources>
     <string name="app_name">RowingutApp</string>
+
     <string name="onboarding_page_1_large">Добавляйте тренировки</string>
     <string name="onboarding_page_1_small">Создавайте тренировки\nи совершенствуйтесь</string>
     <string name="onboarding_page_2_large">Следите за результатами</string>
     <string name="onboarding_page_2_small">Прогрессируйте и сохраняйте\nсвои достижения</string>
     <string name="onboarding_page_3_large">Участвуйте в гонках</string>
     <string name="onboarding_page_3_small">Покажите все, чему вы научились\nна тренировках</string>
+
     <string name="sign_in_text_large">Добро пожаловать</string>
     <string name="sign_in_text_small">Войдите в учетную запись,\nчтобы продолжить</string>
+
     <string name="hint_email">Почта</string>
     <string name="hint_confirm_password">Подтвердите пароль</string>
     <string name="hint_password">Пароль</string>
     <string name="hint_forget_password">Забыли пароль?</string>
+
     <string name="btn_sign_in">Войти</string>
     <string name="btn_sign_up">Регистрация</string>
+
     <string name="sign_up_text_large">Создать новый аккаунт</string>
     <string name="sign_up_text_small">Заполните поля ниже,\nчтобы пройти регистрацию</string>
+
+    <string name="trainings_text_header_current">Сегодня</string>
+    <string name="trainings_text_header_last">Сегодня</string>
+
+
+    <string name="card_training_name_example">Концепт</string>
+    <string name="card_training_type_example">Тип: кардио</string>d
+    <string name="card_training_text_example">1.Разминка\n2.Концепт\n3.Заминка\n4.Бег</string>
+    <string name="card_training_hours_example">2 часа</string>
+    <string name="card_training_button_start">Начать</string>
+
+    <string name="img_training_type">img_training_type</string>d
+
+
 </resources>

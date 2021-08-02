@@ -3,57 +3,58 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="72dp"
+    android:layout_height="?attr/actionBarSize"
     android:background="@drawable/main_bottombar_background"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
-    <ru.kirilldev.rowingutapp.ui.main.CheckableImageView
-        android:id="@+id/checkableImageView2"
-        style="@style/BottombarIcon"
-        android:layout_height="70dp"
-        android:src="@drawable/user_states"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/checkableImageView"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="1dp" />
 
     <ru.kirilldev.rowingutapp.ui.main.CheckableImageView
-        android:id="@+id/checkableImageView"
+        android:id="@+id/home_button"
+        style="@style/BottombarIcon"
+        android:layout_height="70dp"
+        android:layout_marginBottom="2dp"
+        android:src="@drawable/home_states"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/racing_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ru.kirilldev.rowingutapp.ui.main.CheckableImageView
+        android:id="@+id/racing_button"
         style="@style/BottombarIcon"
         android:layout_height="70dp"
         android:src="@drawable/cup_states"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/checkableImageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/home_button"
+        app:layout_constraintEnd_toStartOf="@+id/statistic_button"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/checkableImageView2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="1dp" />
+        app:layout_constraintStart_toEndOf="@+id/home_button"
+        app:layout_constraintTop_toTopOf="@+id/home_button" />
+
 
     <ru.kirilldev.rowingutapp.ui.main.CheckableImageView
-        android:id="@+id/checkableImageView3"
-        style="@style/BottombarIcon"
-        android:layout_height="70dp"
-        android:src="@drawable/home_states"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/checkableImageView4"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/checkableImageView"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="1dp" />
-
-    <ru.kirilldev.rowingutapp.ui.main.CheckableImageView
-        android:id="@+id/checkableImageView4"
+        android:id="@+id/statistic_button"
         style="@style/BottombarIcon"
         android:layout_height="70dp"
         android:src="@drawable/statistic_states"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/racing_button"
+        app:layout_constraintEnd_toStartOf="@+id/profile_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/racing_button"
+        app:layout_constraintTop_toTopOf="@+id/racing_button" />
+
+
+    <ru.kirilldev.rowingutapp.ui.main.CheckableImageView
+        android:id="@+id/profile_button"
+        style="@style/BottombarIcon"
+        android:layout_height="70dp"
+        android:src="@drawable/user_states"
+        app:layout_constraintBottom_toBottomOf="@+id/statistic_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/checkableImageView3"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="1dp" />
+        app:layout_constraintStart_toEndOf="@+id/statistic_button"
+        app:layout_constraintTop_toTopOf="@+id/statistic_button" />
 
 
 </merge>

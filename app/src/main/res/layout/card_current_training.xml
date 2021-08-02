@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_card_training"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="30dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guideline"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="24dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+    <ImageView
+        android:id="@+id/card_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_heart_rate_icon"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toTopOf="@id/top_guideline"
+        android:contentDescription="@string/img_training_type" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_training_name"
+        style="@style/HeaderTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/card_training_name_example"
+        app:layout_constraintStart_toEndOf="@id/card_img"
+        app:layout_constraintTop_toTopOf="@id/top_guideline" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_type_training"
+        style="@style/SubtitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/card_training_type_example"
+        app:layout_constraintStart_toStartOf="@id/tv_training_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_training_name" />
+
+    <ImageView
+        android:id="@+id/img_arrow"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/ic_arrow_icon"
+        app:layout_constraintBottom_toBottomOf="@id/tv_training_name"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toEndOf="@id/tv_training_name"
+        app:layout_constraintTop_toTopOf="@id/tv_training_name"
+        android:layout_height="wrap_content" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_training"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:maxLines="4"
+        style="@style/CardTextStyle"
+        android:text="@string/card_training_text_example"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/card_img" />
+
+    <ImageView
+        android:id="@+id/img_time"
+        android:src="@drawable/ic_time_icon"
+        app:layout_constraintStart_toStartOf="@id/tv_training"
+        android:layout_width="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/bottom_guideline"
+        android:layout_marginStart="4dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_training"
+        android:layout_marginTop="36dp"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_hours_training"
+        style="@style/SubtitleStyle"
+        android:text="@string/card_training_hours_example"
+        app:layout_constraintBottom_toBottomOf="@id/img_time"
+        app:layout_constraintTop_toTopOf="@id/img_time"
+        app:layout_constraintStart_toEndOf="@id/img_time"
+        android:layout_marginStart="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/button_start"
+        android:text="@string/card_training_button_start"
+        android:background="@drawable/shape_start_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/TextButtonStyle"
+        android:elevation="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</merge>
