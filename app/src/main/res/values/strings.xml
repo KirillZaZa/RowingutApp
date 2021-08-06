@@ -25,14 +25,23 @@
     <string name="trainings_text_header_current">Сегодня</string>
     <string name="trainings_text_header_last">Сегодня</string>
 
-
+<!--    Here examples for views  -->
     <string name="card_training_name_example">Концепт</string>
-    <string name="card_training_type_example">Тип: кардио</string>d
+    <string name="card_training_type_example">Тип: кардио</string>
     <string name="card_training_text_example">1.Разминка\n2.Концепт\n3.Заминка\n4.Бег</string>
     <string name="card_training_hours_example">2 часа</string>
     <string name="card_training_button_start">Начать</string>
 
     <string name="img_training_type">img_training_type</string>d
 
+    <string name="card_last_training_type_example">Итоговая</string>
+    <string name="card_last_training_date_example">21 марта</string>
+    <string name="card_last_training_time_example">2 часа</string>
+    <string name="content_desrciption_add_training">Add training</string>
+
+    <string name="header_date_fragment_training_example">Сегодня, 24 мая</string>
+
+
+    <!--      -->
 
 </resources>

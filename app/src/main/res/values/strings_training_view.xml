@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="type_training">Тип: %1$s</string>
+    <string name="time_training">%1$d часа</string>
+
+</resources>

@@ -1,57 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainBackground"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/top_guideline"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="30dp"
-        android:layout_width="0dp"
-        android:layout_height="0dp"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/center_guideline"
-        app:layout_constraintGuide_percent="0.5"
-        android:orientation="horizontal"
-        android:layout_width="0dp"
-        android:layout_height="0dp"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/start_guideline"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="24dp"
-        android:layout_width="0dp"
-        android:layout_height="0dp"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/end_guideline"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="24dp"
-        android:layout_width="0dp"
-        android:layout_height="0dp"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/tv_header"
-        app:layout_constraintTop_toBottomOf="@id/top_guideline"
-        android:text="@string/trainings_text_header_current"
-        android:theme="@style/HeaderTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    android:id="@+id/fragment_container"
+    android:background="@color/mainBackground">
 
     <ru.kirilldev.rowingutapp.ui.main.MainBottombar
         android:id="@+id/main_bottombar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <fragment
+        android:id="@+id/fragment"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/main_bottombar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
 
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_training"
+        android:layout_width="48dp"
+        android:backgroundTint="@color/white"
+        android:tint="@color/mainPurple"
+        app:fabCustomSize="48dp"
+        android:src="@drawable/ic_baseline_add_24"
+        app:pressedTranslationZ="12dp"
+        app:layout_constraintBottom_toTopOf="@id/main_bottombar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        android:layout_height="48dp"
+        android:contentDescription="@string/content_desrciption_add_training" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

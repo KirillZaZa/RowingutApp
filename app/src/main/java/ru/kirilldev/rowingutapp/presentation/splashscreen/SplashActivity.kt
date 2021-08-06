@@ -3,10 +3,14 @@ package ru.kirilldev.rowingutapp.presentation.splashscreen
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import ru.kirilldev.rowingutapp.data.local.RowerUser
+import ru.kirilldev.rowingutapp.data.local.User
 import ru.kirilldev.rowingutapp.presentation.intro.RowingutIntroActivity
 import ru.kirilldev.rowingutapp.presentation.registration.RegistrationActivity
+import ru.kirilldev.rowingutapp.ui.main.CheckableImageView
 
 class SplashActivity : AppCompatActivity() {
+
 
 
     companion object {
@@ -15,13 +19,12 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val thread = Thread{
             run{
                 val prefs = this.getPreferences(MODE_PRIVATE)
                 val isFirstStart = prefs.getBoolean(FIRST_START, true)
 
-                if(isFirstStart){
+                if (isFirstStart){
                     val intent = Intent(this, RowingutIntroActivity::class.java)
 
                     with(prefs.edit()){
@@ -38,10 +41,11 @@ class SplashActivity : AppCompatActivity() {
                     finish()
                 }
             }
-        }
 
+        }
         thread.start()
 
     }
+
 
 }

@@ -13,7 +13,7 @@ class RowingutApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
+        scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
     }
 
 }

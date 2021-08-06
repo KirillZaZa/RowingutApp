@@ -17,7 +17,6 @@ class MainBottombar @JvmOverloads constructor(
 ): ConstraintLayout(context, attrs, defStyleAttributeSet) {
 
 
-
     init {
         View.inflate(context, R.layout.main_bottombar, this)
         val materialBg = ContextCompat.getDrawable(context, R.drawable.main_bottombar_background)

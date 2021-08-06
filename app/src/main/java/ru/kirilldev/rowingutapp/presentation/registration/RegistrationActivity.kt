@@ -1,17 +1,6 @@
 package ru.kirilldev.rowingutapp.presentation.registration
 
-import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.widget.ViewPager2
-import ru.kirilldev.rowingutapp.R
-import ru.kirilldev.rowingutapp.presentation.registration.adapter.RegistrationViewPagerAdapter
-import ru.kirilldev.rowingutapp.presentation.registration.interfaces.RegistrationView
-import ru.kirilldev.rowingutapp.presentation.registration.presenter.RegistrationPresenter
-import ru.kirilldev.rowingutapp.ui.reg.RegistrationBottombar
-import kotlin.math.abs
 
 class RegistrationActivity : FragmentActivity(){
 

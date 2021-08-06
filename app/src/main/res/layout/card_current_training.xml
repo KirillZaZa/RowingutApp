@@ -32,19 +32,19 @@
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bottom_guideline"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="24dp"
         android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="24dp" />
 
     <ImageView
         android:id="@+id/card_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/img_training_type"
         android:src="@drawable/ic_heart_rate_icon"
         app:layout_constraintStart_toEndOf="@id/start_guideline"
-        app:layout_constraintTop_toTopOf="@id/top_guideline"
-        android:contentDescription="@string/img_training_type" />
+        app:layout_constraintTop_toTopOf="@id/top_guideline" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_training_name"
@@ -68,60 +68,60 @@
     <ImageView
         android:id="@+id/img_arrow"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:src="@drawable/ic_arrow_icon"
         app:layout_constraintBottom_toBottomOf="@id/tv_training_name"
         app:layout_constraintEnd_toStartOf="@id/end_guideline"
         app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toEndOf="@id/tv_training_name"
-        app:layout_constraintTop_toTopOf="@id/tv_training_name"
-        android:layout_height="wrap_content" />
+        app:layout_constraintTop_toTopOf="@id/tv_training_name" />
 
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_training"
+        style="@style/CardTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
         android:maxLines="4"
-        style="@style/CardTextStyle"
         android:text="@string/card_training_text_example"
         app:layout_constraintEnd_toStartOf="@id/end_guideline"
-        android:layout_marginStart="4dp"
         app:layout_constraintStart_toEndOf="@id/start_guideline"
         app:layout_constraintTop_toBottomOf="@id/card_img" />
 
     <ImageView
         android:id="@+id/img_time"
-        android:src="@drawable/ic_time_icon"
-        app:layout_constraintStart_toStartOf="@id/tv_training"
         android:layout_width="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/bottom_guideline"
+        android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_training"
         android:layout_marginTop="36dp"
-        android:layout_height="wrap_content"/>
+        android:src="@drawable/ic_time_icon"
+        app:layout_constraintBottom_toTopOf="@id/bottom_guideline"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_training" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_hours_training"
         style="@style/SubtitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="@string/card_training_hours_example"
         app:layout_constraintBottom_toBottomOf="@id/img_time"
-        app:layout_constraintTop_toTopOf="@id/img_time"
         app:layout_constraintStart_toEndOf="@id/img_time"
-        android:layout_marginStart="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintTop_toTopOf="@id/img_time" />
 
     <TextView
         android:id="@+id/button_start"
-        android:text="@string/card_training_button_start"
-        android:background="@drawable/shape_start_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         style="@style/TextButtonStyle"
-        android:elevation="4dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_start_button"
+        android:elevation="4dp"
+        android:text="@string/card_training_button_start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </merge>

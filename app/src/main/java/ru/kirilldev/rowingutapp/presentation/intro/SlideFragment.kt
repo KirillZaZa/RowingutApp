@@ -15,7 +15,6 @@ class SlideFragment: Fragment() {
 
     private var page by Delegates.notNull<Int>()
     private var layoutResId by Delegates.notNull<Int>()
-    private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     companion object {
         private const val ARG_PAGE = "page"
