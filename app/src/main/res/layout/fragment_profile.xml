@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackground"
+    tools:context=".ProfileFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="36dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/center_guideline"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_profile_header"
+        style="@style/HeaderTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_header_profile"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/top_guideline" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_profile"
+        android:layout_width="124dp"
+        android:layout_height="124dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/shape_circle_image"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_profile_header"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_user_name"
+        android:text="@string/text_name_profile"
+        style="@style/HeaderTextStyle"
+        app:layout_constraintTop_toBottomOf="@id/img_profile"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_user_email"
+        android:text="@string/text_email_profile"
+        style="@style/SubtitleStyle"
+        app:layout_constraintEnd_toEndOf="@id/tv_user_name"
+        app:layout_constraintStart_toStartOf="@id/tv_user_name"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_user_age"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        android:text="@string/text_user_age"
+        android:layout_marginTop="24dp"
+        style="@style/TVUserParamsStyle"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_email"
+        app:layout_constraintVertical_bias="1"
+        android:background="@drawable/shape_user_params"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_user_weight"
+        style="@style/TVUserParamsStyle"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/shape_user_params"
+        android:text="@string/text_user_weight"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_email"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_user_height"
+        style="@style/TVUserParamsStyle"
+        android:background="@drawable/shape_user_params"
+        android:text="@string/text_user_height"
+        android:layout_marginTop="24dp"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_email"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintStart_toEndOf="@id/tv_user_weight"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

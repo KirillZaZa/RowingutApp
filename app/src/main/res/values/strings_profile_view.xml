@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="text_header_profile">Профиль</string>
+    <string name="text_name_profile">Имя_юзера</string>
+    <string name="text_email_profile">example@mail.com</string>
+
+    <string name="text_user_age">24 года</string>
+    <string name="text_user_weight">85 кг</string>
+    <string name="text_user_height">181 см</string>
+
+
+</resources>
