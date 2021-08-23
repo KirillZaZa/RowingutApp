@@ -1,5 +1,4 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Theme.RowingutApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/mainPurple</item>
@@ -81,6 +80,8 @@
         <item name="android:layout_width">96dp</item>
         <item name="android:layout_height">42dp</item>
         <item name="android:textAlignment">center</item>
+        <item name="fontFamily">@font/gilroy_medium</item>
     </style>
+
 
 </resources>

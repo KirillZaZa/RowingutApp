@@ -24,5 +24,7 @@
 
     <color name="subtitleColor">#FFDCCFE6</color>
 
+    <color name="cardInfoColor">#535353</color>
+
 
 </resources>

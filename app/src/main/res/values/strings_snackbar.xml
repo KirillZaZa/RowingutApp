@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="snackbar_training_name_example">Концепт</string>
+    <string name="snackbar_timer_text_example">00:25:21</string>
+
+</resources>

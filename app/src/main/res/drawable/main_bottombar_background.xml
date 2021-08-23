@@ -6,7 +6,6 @@
         <shape>
 
             <solid android:color="@color/regBlack" />
-            <corners android:topLeftRadius="30dp" android:topRightRadius="30dp" />
 
         </shape>
 

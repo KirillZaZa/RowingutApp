@@ -9,12 +9,12 @@
     <ru.kirilldev.rowingutapp.ui.main.MainBottombar
         android:id="@+id/main_bottombar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,19 +24,16 @@
         android:layout_height="0dp"/>
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add_training"
-        android:layout_width="48dp"
-        android:backgroundTint="@color/white"
-        android:tint="@color/mainPurple"
-        app:fabCustomSize="48dp"
-        android:src="@drawable/ic_baseline_add_24"
-        app:pressedTranslationZ="12dp"
+    <include
+        android:id="@+id/snackbar_training"
+        layout="@layout/training_snackbar"
+        android:elevation="4dp"
         app:layout_constraintBottom_toTopOf="@id/main_bottombar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"
-        android:layout_height="48dp"
-        android:contentDescription="@string/content_desrciption_add_training" />
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

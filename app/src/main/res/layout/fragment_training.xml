@@ -1,76 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/mainBackground"
     tools:context=".TrainingFragment">
-
 
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_guideline"
-        app:layout_constraintGuide_begin="36dp"
-        android:orientation="horizontal"
         android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="36dp" />
 
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/start_guideline"
-        app:layout_constraintGuide_begin="24dp"
-        android:orientation="vertical"
         android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
 
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/end_guideline"
-        app:layout_constraintGuide_end="24dp"
-        android:orientation="vertical"
         android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/center_guideline"
-        app:layout_constraintGuide_percent="0.5"
         android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_height="0dp"/>
+        app:layout_constraintGuide_percent="0.5" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_header"
         style="@style/HeaderTextStyle"
-        app:layout_constraintTop_toBottomOf="@id/top_guideline"
-        app:layout_constraintStart_toEndOf="@id/start_guideline"
-        app:layout_constraintEnd_toStartOf="@id/end_guideline"
-        android:text="@string/header_date_fragment_training_example"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="@string/header_date_fragment_training_example"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/top_guideline" />
 
 
     <ru.kirilldev.rowingutapp.ui.main.CustomCardView
         android:id="@+id/custom_card_view"
-        app:layout_constraintStart_toEndOf="@id/start_guideline"
-        app:layout_constraintEnd_toStartOf="@id/end_guideline"
-        app:layout_constraintBottom_toTopOf="@id/center_guideline"
-        app:layout_constraintTop_toBottomOf="@id/tv_header"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_width="0dp"
-        android:layout_height="0dp"/>
-
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewpager_last_training"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/center_guideline"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_header" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_training"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="64dp"
+        android:backgroundTint="@color/mainPurple"
+        android:contentDescription="@string/content_desrciption_add_training"
+        android:elevation="4dp"
+        android:src="@drawable/ic_baseline_add_24"
+        android:tint="@color/mainPurple"
+        app:fabCustomSize="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:pressedTranslationZ="16dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_last_training"
+        android:layout_width="wrap_content"
+        style="@style/HeaderTextStyle"
         app:layout_constraintTop_toBottomOf="@id/center_guideline"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        android:layout_marginTop="24dp"
+        android:text="@string/header_last_trainings"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_last_trainings"
+        android:layout_width="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_last_training"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        android:layout_height="0dp"/>
 
 
 

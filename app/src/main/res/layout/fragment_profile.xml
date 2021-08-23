@@ -32,10 +32,10 @@
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/center_guideline"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5"
         android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
 
 
     <com.google.android.material.textview.MaterialTextView
@@ -57,62 +57,135 @@
         android:elevation="4dp"
         app:layout_constraintEnd_toStartOf="@id/end_guideline"
         app:layout_constraintStart_toEndOf="@id/start_guideline"
-        app:layout_constraintTop_toBottomOf="@id/tv_profile_header"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_profile_header" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_user_name"
-        android:text="@string/text_name_profile"
         style="@style/HeaderTextStyle"
-        app:layout_constraintTop_toBottomOf="@id/img_profile"
-        app:layout_constraintStart_toEndOf="@id/start_guideline"
-        app:layout_constraintEnd_toStartOf="@id/end_guideline"
-        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/text_name_profile"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/img_profile" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_user_email"
-        android:text="@string/text_email_profile"
         style="@style/SubtitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/text_email_profile"
         app:layout_constraintEnd_toEndOf="@id/tv_user_name"
         app:layout_constraintStart_toStartOf="@id/tv_user_name"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_user_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_user_name" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_user_age"
-        app:layout_constraintStart_toEndOf="@id/start_guideline"
-        android:text="@string/text_user_age"
-        android:layout_marginTop="24dp"
         style="@style/TVUserParamsStyle"
+        android:background="@drawable/shape_user_params"
         app:layout_constraintTop_toBottomOf="@id/tv_user_email"
-        app:layout_constraintVertical_bias="1"
-        android:background="@drawable/shape_user_params"/>
+        android:layout_marginTop="24dp"
+        android:text="@string/text_user_age"
+        app:layout_constraintEnd_toStartOf="@+id/tv_user_weight"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_user_weight"
         style="@style/TVUserParamsStyle"
-        android:layout_marginTop="24dp"
         android:background="@drawable/shape_user_params"
         android:text="@string/text_user_weight"
         app:layout_constraintTop_toBottomOf="@id/tv_user_email"
-        app:layout_constraintVertical_bias="1"
-        app:layout_constraintStart_toEndOf="@id/start_guideline"
-        app:layout_constraintEnd_toStartOf="@id/end_guideline"/>
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_user_height"
+        app:layout_constraintStart_toEndOf="@+id/tv_user_age"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_user_height"
         style="@style/TVUserParamsStyle"
         android:background="@drawable/shape_user_params"
         android:text="@string/text_user_height"
-        android:layout_marginTop="24dp"
-        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_user_email"
-        app:layout_constraintVertical_bias="1"
-        app:layout_constraintStart_toEndOf="@id/tv_user_weight"
-        app:layout_constraintEnd_toStartOf="@id/end_guideline"/>
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_user_weight"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_heartbeat"
+        android:layout_width="154dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="40dp"
+        app:cardBackgroundColor="@color/cardInfoColor"
+        app:cardCornerRadius="18dp"
+        app:layout_constraintEnd_toStartOf="@+id/card_calories"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_weight">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_heartbeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/ic_heartbeat_profile_icon" />
+
+        <TextView
+            android:id="@+id/tv_heartbeat_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/gilroy_black"
+            android:text="@string/text_heartbeat_example"
+            android:textSize="16sp" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_calories"
+        android:layout_width="154dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="40dp"
+        app:cardBackgroundColor="@color/cardInfoColor"
+        app:cardCornerRadius="18dp"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintStart_toEndOf="@+id/card_heartbeat"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_weight">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_calories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/ic_fire_profile_icon" />
+
+        <TextView
+            android:id="@+id/tv_calories_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/gilroy_black"
+            android:text="@string/text_calories_example"
+            android:textSize="16sp" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <ru.kirilldev.rowingutapp.ui.main.StatisticLayout
+        android:id="@+id/statistic_layout"
+        android:layout_width="0dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/card_heartbeat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="64dp"
+        android:layout_height="0dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

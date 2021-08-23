@@ -40,7 +40,8 @@
     <string name="content_desrciption_add_training">Add training</string>
 
     <string name="header_date_fragment_training_example">Сегодня, 24 мая</string>
-
+    <string name="header_last_trainings">Прошлые тренировки</string>
+    
 
     <!--      -->
 

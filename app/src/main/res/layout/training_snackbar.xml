@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/darkPurple"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_snackbar_training"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/ic_heart_rate_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_snackbar_training_name"
+        style="@style/HeaderTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="12dp"
+        android:text="@string/snackbar_training_name_example" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_snackbar_timer"
+        style="@style/HeaderTextStyle"
+        android:layout_width="wrap_content"
+        android:textScaleX="1.1"
+        android:textSize="28sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="24dp"
+        android:text="@string/snackbar_timer_text_example" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_check_training"
+        android:background="@drawable/ic_arrow_icon"
+        android:layout_width="18dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="56dp"
+        android:layout_height="28dp"/>
+
+</LinearLayout>

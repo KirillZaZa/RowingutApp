@@ -9,5 +9,14 @@
     <string name="text_user_weight">85 кг</string>
     <string name="text_user_height">181 см</string>
 
+    <string name="text_heartbeat_example">70 у/c</string>
+    <string name="text_calories_example">3000 ккал</string>
+
+    <string name="text_statistic_header">Статистика</string>
+    
+    <string-array name="time_statistic">
+        <item>За неделю</item>
+        <item>За месяц</item>
+    </string-array>
 
 </resources>
