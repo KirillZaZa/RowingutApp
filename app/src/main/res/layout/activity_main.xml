@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_container"
     android:background="@color/mainBackground">
 
@@ -24,13 +25,14 @@
         android:layout_height="0dp"/>
 
 
-    <include
+    <ru.kirilldev.rowingutapp.ui.main.SnackbarTraining
         android:id="@+id/snackbar_training"
-        layout="@layout/training_snackbar"
         android:elevation="4dp"
         app:layout_constraintBottom_toTopOf="@id/main_bottombar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible"
         android:layout_height="wrap_content"
         android:layout_width="0dp"/>
 
