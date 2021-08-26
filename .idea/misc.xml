@@ -30,11 +30,15 @@
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/custom_circle_image_view.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/custom_circle_image_view_small.xml" value="0.4" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/custom_current_position.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/custom_racing_info.xml" value="0.4" />
+        <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/fragment_new_training.xml" value="0.159375" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/fragment_profile.xml" value="0.152" />
+        <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/fragment_racings.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/fragment_ratings.xml" value="0.176" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/fragment_start_training.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/fragment_training.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/item_last_trainings.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/item_racing_info.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/item_rating_user_position.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/item_statistic_days.xml" value="0.4" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/item_statistic_rectangle.xml" value="0.536" />

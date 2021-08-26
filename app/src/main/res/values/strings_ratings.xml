@@ -7,6 +7,6 @@
     <string name="text_rating_calories">48982 ккал</string>
     <string name="text_rating_position">22</string>
     
-    <string name="text_calories_example">79032 ккал</string>
+    <string name="text_calories_ratings_example">79032 ккал</string>
     <string name="text_rating_user_name">Роджер Вактер</string>
 </resources>
