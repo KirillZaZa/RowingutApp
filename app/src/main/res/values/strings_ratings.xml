@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    
+    <string name="text_rating_first_example">1</string>
+    <string name="text_rating_header">Рейтинги</string>
+    <string name="text_rating_calories">48982 ккал</string>
+    <string name="text_rating_position">22</string>
+    
+    <string name="text_calories_example">79032 ккал</string>
+    <string name="text_rating_user_name">Роджер Вактер</string>
+</resources>

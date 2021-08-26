@@ -26,5 +26,10 @@
 
     <color name="cardInfoColor">#535353</color>
 
+    <color name="gold">#E2A224</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="bronze">#C96049</color>
+
+
 
 </resources>

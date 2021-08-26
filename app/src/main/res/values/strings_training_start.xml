@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="start_training_name_example">Концепт</string>
+    <string name="start_training_type_example">Тип: кардио</string>
+    <string name="start_training_hours_example">2 часа</string>
+    <string name="start_training_tasks_example">1.Разминка\n2.Концепт\n3.Заминка\n4.Бег</string>
+    <string name="start_training_time_example">00:25:21</string>
+    <string name="start_training_button_text">Начать</string>
+
+</resources>

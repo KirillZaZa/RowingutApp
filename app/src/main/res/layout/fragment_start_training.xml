@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/mainBackground"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="36dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
+
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_arrow_icon"
+        android:rotation="180"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/top_guideline"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_training_start_name"
+        style="@style/HeaderTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_training_name_example"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/top_guideline" />
+    
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_training_start_heart"
+        android:layout_width="42dp"
+        app:layout_constraintTop_toTopOf="@id/tv_training_start_name"
+        app:layout_constraintBottom_toBottomOf="@id/tv_training_start_name"
+        app:layout_constraintStart_toEndOf="@id/tv_training_start_name"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_heart_rate_icon"
+        android:layout_height="36dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_training_start_type"
+        style="@style/TVStartTraining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/start_training_type_example"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        tools:ignore="TextContrastCheck" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_training_start_hours"
+        android:layout_width="24dp"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_training_start_type"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/ic_time_icon"
+        android:layout_height="24dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_training_start_hours"
+        style="@style/TVStartTraining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/start_training_hours_example"
+        app:layout_constraintBottom_toBottomOf="@id/img_training_start_hours"
+        app:layout_constraintStart_toEndOf="@id/img_training_start_hours"
+        app:layout_constraintTop_toTopOf="@id/img_training_start_hours"
+        tools:ignore="TextContrastCheck" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_training_start_tasks"
+        android:text="@string/start_training_tasks_example"
+        style="@style/HeaderTextStyle"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_training_start_hours"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        android:layout_marginTop="36dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_training_start_time"
+        android:layout_width="wrap_content"
+        android:text="@string/start_training_time_example"
+        style="@style/HeaderTextStyle"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@id/btn_start"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        android:scaleX="1.25"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        android:layout_marginTop="72dp"
+        android:layout_height="wrap_content"/>
+
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_start"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/shape_card_last_training"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/mainBackground"
+    android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="36dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guideline"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="72dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_calories_first"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/circle_img_first"
+        app:layout_constraintStart_toStartOf="@id/circle_img_first"
+        app:layout_constraintEnd_toEndOf="@id/circle_img_first"
+        style="@style/SubtitleStyle"
+        android:textSize="14sp"
+        android:text="@string/text_calories_example"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"/>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_calories_second"
+        style="@style/SubtitleStyle"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/circle_img_second"
+        app:layout_constraintStart_toStartOf="@id/circle_img_second"
+        app:layout_constraintEnd_toEndOf="@id/circle_img_second"
+        android:layout_marginTop="8dp"
+        android:text="@string/text_calories_example"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_calories_third"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/circle_img_third"
+        app:layout_constraintTop_toBottomOf="@id/circle_img_third"
+        app:layout_constraintEnd_toEndOf="@id/circle_img_third"
+        style="@style/SubtitleStyle"
+        android:textSize="14sp"
+        android:text="@string/text_calories_example"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_header_ratings"
+        style="@style/HeaderTextStyle"
+        app:layout_constraintTop_toBottomOf="@id/top_guideline"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        android:text="@string/text_rating_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ru.kirilldev.rowingutapp.ui.main.CircleRatingImageView
+        android:id="@+id/circle_img_first"
+        app:layout_constraintTop_toBottomOf="@id/tv_header_ratings"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        android:layout_marginTop="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ru.kirilldev.rowingutapp.ui.main.CircleRatingImageViewSmall
+        android:id="@+id/circle_img_second"
+        app:layout_constraintEnd_toStartOf="@id/circle_img_first"
+        app:layout_constraintTop_toTopOf="@id/circle_img_first"
+        app:layout_constraintBottom_toBottomOf="@id/circle_img_first"
+        android:layout_marginEnd="36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ru.kirilldev.rowingutapp.ui.main.CircleRatingImageViewSmall
+        android:id="@+id/circle_img_third"
+        app:layout_constraintStart_toEndOf="@id/circle_img_first"
+        app:layout_constraintBottom_toBottomOf="@id/circle_img_first"
+        app:layout_constraintTop_toTopOf="@id/circle_img_first"
+        android:layout_marginStart="36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <ru.kirilldev.rowingutapp.ui.main.CustomCurrentPositionView
+        android:id="@+id/view_current_position"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        android:background="@drawable/shape_card_training"
+        app:layout_constraintTop_toBottomOf="@id/circle_img_first"
+        android:layout_marginTop="48dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_rating"
+        app:layout_constraintBottom_toTopOf="@id/bottom_guideline"
+        app:layout_constraintTop_toBottomOf="@id/view_current_position"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        android:layout_marginTop="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
