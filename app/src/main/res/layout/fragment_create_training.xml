@@ -150,6 +150,8 @@
             android:hint="@string/hint_tasks_example"
             android:fontFamily="@font/gilroy_medium"
             android:gravity="top"
+            android:maxLines="12"
+
             android:inputType="text"
             android:textColor="@color/white" />
 

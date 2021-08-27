@@ -9,7 +9,7 @@
 
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_profile_first_rank"
+        android:id="@+id/img_small_rank"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/shape_circle_image_silver"
@@ -20,6 +20,7 @@
         />
 
     <TextView
+        android:id="@+id/tv_second_rank"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:background="@drawable/shape_circle_rating_silver"
@@ -28,10 +29,10 @@
         android:text="@string/text_rating_first_example"
         android:textColor="#F5F5F5"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/img_profile_first_rank"
-        app:layout_constraintBottom_toBottomOf="@id/img_profile_first_rank"
-        app:layout_constraintStart_toStartOf="@id/img_profile_first_rank"
-        app:layout_constraintEnd_toEndOf="@id/img_profile_first_rank"
+        app:layout_constraintTop_toBottomOf="@id/img_small_rank"
+        app:layout_constraintBottom_toBottomOf="@id/img_small_rank"
+        app:layout_constraintStart_toStartOf="@id/img_small_rank"
+        app:layout_constraintEnd_toEndOf="@id/img_small_rank"
         tools:ignore="TextContrastCheck,TextContrastCheck,TextContrastCheck"/>
 
 

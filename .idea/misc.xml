@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/drawable/bg_spinner.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/drawable/cup_states.xml" value="0.2703125" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/drawable/gradient_background_purple.xml" value="0.2703125" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/drawable/ic_arrow_icon.xml" value="0.2703125" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2703125" />
@@ -25,6 +26,8 @@
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/drawable/shape_statistic_element.xml" value="0.24814814814814815" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/drawable/shape_user_params.xml" value="0.2212962962962963" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/activity_onboarding.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/activity_registration.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/card_current_training.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/card_last_training.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/custom_circle_image_view.xml" value="0.264" />
@@ -46,7 +49,7 @@
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/item_statistic_rectangle.xml" value="0.536" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/main_bottombar.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/shape_rating_current_place.xml" value="0.25416666666666665" />
-        <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/statistic_layout.xml" value="0.12" />
+        <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/statistic_layout.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/RowingutApp/app/src/main/res/layout/training_snackbar.xml" value="0.264" />
         <entry key="..\:/RowingutApp/app/src/main/res/drawable-v24/ic_baseline_arrow_forward_24.xml" value="0.1537037037037037" />
         <entry key="..\:/RowingutApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1537037037037037" />
