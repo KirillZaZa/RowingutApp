@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="text_create_training_type">Тип:</string>
+    <string name="text_create_training_header">Новая тренировка</string>
+    <string name="hint_name_of_create_training">Название</string>
+    <string name="hint_time_of_create_training">Длительность</string>
+    <string name="hint_tasks_example">1.Разминка\n2.Концепт\n3.Заминка\n4.Бег</string>
+    <string name="hint_tasks_of_create_training">Задания</string>
+
+    <string-array name="text_spinner_type">
+        <item>Кардио</item>
+        <item>Силовая</item>
+        <item>Итоговая</item>
+    </string-array>
+
+</resources>
