@@ -7,12 +7,13 @@ data class RowerUser(
     val name: String,
     val hash: String,
     val email: String,
-    val age: String,
-    val weight: String,
-    val height: String,
-    val calories: Int,
-    val averageBpm: Int,
-    val ratingPlace: Int
+    val img: String? = null,
+    val age: Int? = null,
+    val weight: Int? = null,
+    val height: Int? = null,
+    val calories: Int = 0,
+    val averageBpm: Int = 0,
+    val ratingPlace: Int = 0
 )
 
 

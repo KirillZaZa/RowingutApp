@@ -8,7 +8,7 @@ import kotlinx.coroutines.SupervisorJob
 class RowingutApplication: Application() {
 
     companion object{
-        private lateinit var scope: CoroutineScope
+        lateinit var scope: CoroutineScope
     }
 
     override fun onCreate() {
