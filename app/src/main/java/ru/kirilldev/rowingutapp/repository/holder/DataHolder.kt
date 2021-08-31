@@ -1,4 +1,4 @@
-package ru.kirilldev.rowingutapp.repository
+package ru.kirilldev.rowingutapp.repository.holder
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -8,6 +8,7 @@ import kotlinx.coroutines.withContext
 import ru.kirilldev.rowingutapp.api.retrofit.RetrofitInstance
 import ru.kirilldev.rowingutapp.application.RowingutApplication
 import ru.kirilldev.rowingutapp.data.local.Racing
+import ru.kirilldev.rowingutapp.data.local.RowerUser
 import ru.kirilldev.rowingutapp.data.local.Training
 import java.lang.Exception
 
@@ -15,6 +16,7 @@ object FirebaseDataHolder {
 
 
     /**
+     *
      * @FirebaseDataHolder is intended for network interaction
      *
      */
@@ -68,6 +70,14 @@ object FirebaseDataHolder {
         }
 
         return racingsLiveData
+    }
+
+    fun getRowerUserList(): MutableLiveData<List<RowerUser>?>{
+        val userList = MutableLiveData<List<RowerUser>?>()
+
+        //TODO
+
+        return userList
     }
 
 
