@@ -1,6 +1,7 @@
 package ru.kirilldev.rowingutapp.api.service
 
 import kotlinx.coroutines.Deferred
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.PUT
 import retrofit2.http.Query
@@ -22,14 +23,16 @@ interface IFirebaseService {
     suspend fun getRowerUserList(): Deferred<List<RowerUser>>
 
     @GET("/documents/users/{id}")
-    suspend fun getRowerUser(@Query("id")id: String): Deferred<List<RowerUser>>
+    suspend fun getRowerUser(@Query("id")id: String): Deferred<RowerUser>
 
     @PUT("/documents/users")
-    suspend fun updateRowerUser(id: String)
+    suspend fun updateRowerUser(id: String, newUser: RowerUser)
 
     @PUT("/documents/todayTraining/{date}")
-    suspend fun updateTodayTraining(@Query("date")date: String)
+    suspend fun updateTodayTraining(@Query("date")date: String, newTraining: Training)
 
 
 
 }
+
+
