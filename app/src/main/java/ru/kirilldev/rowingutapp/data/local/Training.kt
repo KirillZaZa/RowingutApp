@@ -1,9 +1,7 @@
 package ru.kirilldev.rowingutapp.data.local
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
+import androidx.room.*
+import ru.kirilldev.rowingutapp.room.typeconverter.ListTypeConverter
 
 
 @Entity(tableName = "training_table", indices = [Index(value = ["training_date"], unique = true)])
@@ -17,9 +15,10 @@ data class Training(
     val trainingName: String? = null,
 
     @ColumnInfo(name = "time")
-    val trainingTime: Long? = null,
+    val trainingTime: Float? = null,
 
     @ColumnInfo(name = "tasks")
+    @TypeConverters(ListTypeConverter::class)
     val trainingTasks: List<String>? = emptyList(),
 
     @ColumnInfo(name = "type")

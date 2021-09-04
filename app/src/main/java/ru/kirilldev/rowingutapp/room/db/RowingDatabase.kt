@@ -11,6 +11,9 @@ import ru.kirilldev.rowingutapp.data.local.Training
 import ru.kirilldev.rowingutapp.room.dao.RacingDao
 import ru.kirilldev.rowingutapp.room.dao.RowerUserDao
 import ru.kirilldev.rowingutapp.room.dao.TrainingDao
+import ru.kirilldev.rowingutapp.room.callback.RowingDataBaseCallback
+import ru.kirilldev.rowingutapp.room.exception.DatabaseNotExistsException
+import kotlin.jvm.Throws
 
 
 @Database(
@@ -18,29 +21,37 @@ import ru.kirilldev.rowingutapp.room.dao.TrainingDao
     version = 1,
     exportSchema = true
 )
-abstract class RowingDatabase: RoomDatabase() {
+abstract class RowingDatabase : RoomDatabase() {
 
     abstract fun getRacingDao(): RacingDao
     abstract fun getTrainingDao(): TrainingDao
     abstract fun getRowerUserDao(): RowerUserDao
 
-    companion object{
+    companion object {
 
         @Volatile
         private var INSTANCE: RowingDatabase? = null
 
-        fun getDataBase(context: Context, scope: CoroutineScope): RowingDatabase{
-            return INSTANCE ?: synchronized(this){
+        fun getDataBase(context: Context, scope: CoroutineScope): RowingDatabase {
+            return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     RowingDatabase::class.java,
                     "rowing_database"
                 )
-                    .
+                    .addCallback(RowingDataBaseCallback(INSTANCE, scope))
                     .build()
                 INSTANCE = instance
                 instance
             }
+        }
+
+
+        fun deleteDatabase() {
+           if(INSTANCE == null){
+               throw DatabaseNotExistsException()
+           }
+            INSTANCE!!.clearAllTables()
         }
 
     }

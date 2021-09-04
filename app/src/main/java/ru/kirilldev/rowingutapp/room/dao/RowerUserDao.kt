@@ -5,22 +5,22 @@ import ru.kirilldev.rowingutapp.data.local.RowerUser
 
 
 @Dao
-interface RowerUserDao {
+abstract class RowerUserDao {
 
 
     @Insert(entity = RowerUser::class, onConflict = OnConflictStrategy.ABORT)
-    suspend fun insertRowerUsers(rowerUser: List<RowerUser>)
+    abstract suspend fun insertRowerUsers(rowerUser: RowerUser)
 
     @Query("SELECT * FROM rower_table WHERE rower_id LIKE :id")
-    suspend fun getRowerUser(id: String): RowerUser
+    abstract suspend fun getRowerUser(id: String): RowerUser
 
     @Query("SELECT * FROM rower_table")
-    suspend fun getRowerList(): List<RowerUser>
+    abstract suspend fun getRowerList(): List<RowerUser>
 
     @Update(entity = RowerUser::class, onConflict = OnConflictStrategy.REPLACE)
-    suspend fun updateRowerUser(id: String)
+    abstract suspend fun updateRowerUser(user: RowerUser)
 
     @Delete(entity = RowerUser::class)
-    suspend fun deleteRowerUser(rowerUser: RowerUser)
+    abstract suspend fun deleteRowerUser(rowerUser: RowerUser)
 
 }

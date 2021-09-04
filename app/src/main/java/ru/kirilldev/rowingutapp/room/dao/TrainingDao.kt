@@ -5,22 +5,22 @@ import ru.kirilldev.rowingutapp.data.local.Training
 
 
 @Dao
-interface TrainingDao {
+abstract class TrainingDao {
 
 
     @Insert(entity = Training::class, onConflict = OnConflictStrategy.ABORT)
-    suspend fun insertTraining(training: Training)
+    abstract suspend fun insertTraining(training: Training)
 
     @Query("SELECT * FROM training_table WHERE training_date LIKE :date")
-    suspend fun getTraining(date: String)
+    abstract suspend fun getTraining(date: String): Training
 
-    @Query("SELECT * FROM training_table WHERE training_date != :date")
-    suspend fun getLastListTraining(date: String): List<Training>
+    @Query("SELECT * FROM training_table")
+    abstract suspend fun getLastListTraining(): List<Training>
 
     @Update(entity = Training::class, onConflict = OnConflictStrategy.REPLACE)
-    suspend fun updateTraining(training: Training)
+    abstract suspend fun updateTraining(training: Training)
 
     @Delete(entity = Training::class)
-    suspend fun deleteTraining(training: Training)
+    abstract suspend fun deleteTraining(training: Training)
 
 }

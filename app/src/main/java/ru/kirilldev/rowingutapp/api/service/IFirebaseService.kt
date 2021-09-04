@@ -26,10 +26,19 @@ interface IFirebaseService {
     suspend fun getRowerUser(@Query("id")id: String): Deferred<RowerUser>
 
     @PUT("/documents/users")
-    suspend fun updateRowerUser(id: String, newUser: RowerUser)
+    suspend fun updateRowerUser(newUser: RowerUser)
+
+    @PUT("/documents/users")
+    suspend fun putRowerUser(user: RowerUser)
+
+    @PUT("documents/trainings")
+    suspend fun putTraining(training: Training)
+
+    @PUT("documents/racings")
+    suspend fun putRacing(racing: Racing)
 
     @PUT("/documents/todayTraining/{date}")
-    suspend fun updateTodayTraining(@Query("date")date: String, newTraining: Training)
+    suspend fun updateTodayTraining(@Query("date")newTraining: Training)
 
 
 

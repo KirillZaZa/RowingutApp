@@ -27,9 +27,9 @@ data class RowerUser(
 
     val age: Int? = null,
 
-    val weight: Int? = null,
+    val weight: Float? = null,
 
-    val height: Int? = null,
+    val height: Float? = null,
 
     val calories: Int = 0,
 
