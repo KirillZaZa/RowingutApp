@@ -26,4 +26,6 @@ interface IRowingutRepository {
     fun loadRacingListData(): LiveData<List<Racing>?>
 
     fun loadRacing(date: String): LiveData<Racing?>
+
+    fun deleteTraining(date: String, callback: (Boolean) -> Unit)
 }

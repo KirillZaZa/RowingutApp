@@ -41,9 +41,8 @@ object FirebaseDataHolder {
         if (this.isCompleted) this.cancel()
     }
 
-    fun getTodayTraining(): LiveData<Training?> {
+    fun getTodayTraining(callback: (LiveData<Training?>) -> Unit) {
         val trainingLiveData = MutableLiveData<Training?>()
-
         val trainingJob = scope.launch {
             try {
                 val response: Training
@@ -56,9 +55,12 @@ object FirebaseDataHolder {
                 trainingLiveData.value = null
             }
         }
+        callback(trainingLiveData)
         trainingJob.cancelingJob()
+    }
 
-        return trainingLiveData
+    fun deleteTraining(date: String,isSuccessfully: (Boolean) -> Unit){
+
     }
 
 
@@ -126,7 +128,6 @@ object FirebaseDataHolder {
 
     fun getRowerUser(id: String): LiveData<RowerUser?> {
         val rowerUser = MutableLiveData<RowerUser?>()
-
         val userJob = scope.launch {
             try {
                 val response: RowerUser?
@@ -146,14 +147,11 @@ object FirebaseDataHolder {
     }
 
     fun updateRowerUser(newUser: RowerUser) {
-        var isSucceeded = false
-
         val updateRowerJob = scope.launch {
             try {
                 withContext(Dispatchers.IO) {
                     api.updateRowerUser(newUser)
                 }
-                isSucceeded = true
             } catch (e: CancellationException) {
                 Log.e(FIREBASE_TAG, "${e.message}")
             }
@@ -162,20 +160,41 @@ object FirebaseDataHolder {
         updateRowerJob.cancelingJob()
     }
 
-    fun updateTodayTraining(newTraining: Training) {
-
+    fun updateTodayTraining(newTraining: Training, isSuccessfully: (Boolean) -> Unit) {
+        var success = true
         val updateTrainingJob = scope.launch {
             try {
                 withContext(Dispatchers.IO) {
-                    api.updateTodayTraining(newTraining)
+                    api.updateTodayTraining(newTraining.trainingDate!!)
                 }
             } catch (e: CancellationException) {
+                e.printError(FIREBASE_TAG)
+                success = false
             }
         }
-
         updateTrainingJob.cancelingJob()
+        isSuccessfully(success)
 
     }
+
+
+    fun putTraining(training: Training, isSuccessfully: (Boolean) -> Unit){
+        var success = true
+        val job = scope.launch {
+            try{
+                withContext(Dispatchers.IO){
+                    api.putTraining(training)
+                }
+            }catch (e :Exception){
+                e.printError(FIREBASE_TAG)
+                success = false
+                this.cancel()
+            }
+        }
+        job.cancelingJob()
+        isSuccessfully(success)
+    }
+
 
 
 }
@@ -341,11 +360,11 @@ object LocalDataHolder : ILocalHolder {
         job.cancellingJob()
     }
 
-    override fun deleteTraining(training: Training) {
+    override fun deleteTraining(date: String) {
         val job = scope.launch {
             try {
                 withContext(Dispatchers.IO) {
-                    dataBase.getTrainingDao().deleteTraining(training)
+                    dataBase.getTrainingDao().deleteTraining(date)
                 }
             } catch (e: CancellationException) {
                 e.printError(LOCAL_STORAGE_TAG)

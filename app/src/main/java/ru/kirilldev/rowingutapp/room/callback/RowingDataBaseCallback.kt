@@ -13,6 +13,7 @@ import ru.kirilldev.rowingutapp.room.dao.RacingDao
 import ru.kirilldev.rowingutapp.room.dao.RowerUserDao
 import ru.kirilldev.rowingutapp.room.dao.TrainingDao
 import ru.kirilldev.rowingutapp.room.db.RowingDatabase
+import ru.kirilldev.rowingutapp.utils.DateUtil
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -76,13 +77,13 @@ class RowingDataBaseCallback(
     )
 
     private fun createTestRacing() = Racing(
-        racingDate = getDate(),
+        racingDate = DateUtil.getDate(),
         racingPlace = "Стрела",
         racingListInfo = RacingInfo(1000, "Командная")
     )
 
     private fun createTestTraining() = Training(
-        trainingDate = getDate(),
+        trainingDate = DateUtil.getDate(),
         trainingName = "Женя, хватит",
         trainingTime = 2.5f,
         trainingTasks = arrayListOf(
@@ -94,11 +95,6 @@ class RowingDataBaseCallback(
     )
 
 
-    private fun getDate(): String {
-        val dateFormat = SimpleDateFormat("dd/M/yyyy", Locale.ROOT)
-
-        return dateFormat.format(Date())
-    }
 
 
 }

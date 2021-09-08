@@ -31,8 +31,9 @@ class RowingutRepository(
     }
 
     override fun uploadTrainingData(training: Training) {
-        firebase.updateTodayTraining(training)
-        db.putTrainingData(training)
+        firebase.putTraining(training) { isSucceded ->
+            if (isSucceded) db.putTrainingData(training)
+        }
     }
 
     override fun loadLastTrainings(): LiveData<List<Training>?> {
@@ -40,17 +41,23 @@ class RowingutRepository(
     }
 
     override fun loadTraining(date: String): LiveData<Training?> {
+        firebase.getTodayTraining { training ->
+            if (training.value != null) {
+                db.putTrainingData(training.value!!)
+            }
+        }
         return db.getTraining(date)
     }
 
     override fun updateTraining(training: Training) {
-        firebase.updateTodayTraining(training)
-        db.updateTraining(training)
+        firebase.updateTodayTraining(training) { isSucceed ->
+            if (isSucceed) db.updateTraining(training)
+        }
     }
 
     override fun loadRacingListData(): LiveData<List<Racing>?> {
         val racingData = firebase.getRacingsList()
-        racingData.value?.forEach { racing->
+        racingData.value?.forEach { racing ->
             db.putRacingListData(racing)
         }
 
@@ -61,6 +68,17 @@ class RowingutRepository(
         return db.getRacing(date)
     }
 
+    override fun deleteTraining(date: String, callback: (Boolean) -> Unit) {
+        var success = false
+        firebase.deleteTraining(date) { isSucceeded ->
+            if(isSucceeded){
+                db.deleteTraining(date)
+                success = true
+            }
+        }
+
+        callback(success)
+    }
 
 
     /**

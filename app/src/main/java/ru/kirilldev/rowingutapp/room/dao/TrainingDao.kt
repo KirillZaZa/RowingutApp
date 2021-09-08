@@ -21,6 +21,6 @@ abstract class TrainingDao {
     abstract suspend fun updateTraining(training: Training)
 
     @Delete(entity = Training::class)
-    abstract suspend fun deleteTraining(training: Training)
+    abstract suspend fun deleteTraining(date: String)
 
 }

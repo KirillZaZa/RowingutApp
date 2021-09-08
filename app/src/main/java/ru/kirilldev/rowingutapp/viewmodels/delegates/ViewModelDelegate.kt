@@ -2,7 +2,9 @@ package ru.kirilldev.rowingutapp.viewmodels.delegates
 
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.lifecycle.*
+import androidx.savedstate.SavedStateRegistryOwner
 import ru.kirilldev.rowingutapp.presentation.splashscreen.SplashActivity
 import ru.kirilldev.rowingutapp.viewmodels.TrainingViewModel
 import ru.kirilldev.rowingutapp.viewmodels.base.BaseViewModel
@@ -26,4 +28,27 @@ class ViewModelDelegate<T>(
         return value!!
     }
 
+
+    private fun Class<T>.isAssignable() {
+
+    }
+
+
+    class ViewModelFactory(owner: SavedStateRegistryOwner) :
+        AbstractSavedStateViewModelFactory(owner, bundleOf()) {
+        override fun <T : ViewModel?> create(
+            key: String,
+            modelClass: Class<T>,
+            handle: SavedStateHandle
+        ): T {
+            if(modelClass.isAssignableFrom(TrainingViewModel::class.java)){
+                return TrainingViewModel(handle) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
+        }
+
+    }
 }
+
+
+

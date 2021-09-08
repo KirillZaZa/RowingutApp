@@ -1,7 +1,7 @@
 package ru.kirilldev.rowingutapp.api.service
 
 import kotlinx.coroutines.Deferred
-import retrofit2.Call
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PUT
 import retrofit2.http.Query
@@ -34,11 +34,11 @@ interface IFirebaseService {
     @PUT("documents/trainings")
     suspend fun putTraining(training: Training)
 
-    @PUT("documents/racings")
-    suspend fun putRacing(racing: Racing)
-
     @PUT("/documents/todayTraining/{date}")
-    suspend fun updateTodayTraining(@Query("date")newTraining: Training)
+    suspend fun updateTodayTraining(@Query("date")date: String)
+
+    @DELETE("documents/todayTraining/{date}")
+    suspend fun deleteTodayTraining(@Query("date")date: String)
 
 
 
