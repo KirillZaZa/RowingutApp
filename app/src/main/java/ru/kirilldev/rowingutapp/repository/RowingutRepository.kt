@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import ru.kirilldev.rowingutapp.data.local.Racing
 import ru.kirilldev.rowingutapp.data.local.RowerUser
 import ru.kirilldev.rowingutapp.data.local.Training
+import ru.kirilldev.rowingutapp.data.remote.RowerRank
 import ru.kirilldev.rowingutapp.repository.holder.FirebaseDataHolder
 import ru.kirilldev.rowingutapp.repository.holder.LocalDataHolder
 import ru.kirilldev.rowingutapp.repository.interfaces.IRowingutRepository
@@ -11,10 +12,12 @@ import ru.kirilldev.rowingutapp.repository.interfaces.IRowingutRepository
 class RowingutRepository(
     private val firebase: FirebaseDataHolder = FirebaseDataHolder,
     private val db: LocalDataHolder = LocalDataHolder
-
+    // prefs manager
 ) : IRowingutRepository {
 
-    override fun loadUserData(id: String): LiveData<RowerUser?> {
+    override fun loadUserData(): LiveData<RowerUser?> {
+        val id = "" // get id in prefs
+
         return db.getUserData(id)
     }
 
@@ -22,8 +25,9 @@ class RowingutRepository(
         firebase.putRowerUser(rowerUser)
     }
 
-    override fun loadRowerList(): LiveData<List<RowerUser>?> {
-        return firebase.getRowerUserList()
+
+    override fun loadRowerRankList(): LiveData<List<RowerRank>?> {
+        return firebase.getRowerRankList()
     }
 
     override fun updateRowerUser(user: RowerUser) {

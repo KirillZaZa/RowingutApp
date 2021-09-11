@@ -4,14 +4,15 @@ import androidx.lifecycle.LiveData
 import ru.kirilldev.rowingutapp.data.local.Racing
 import ru.kirilldev.rowingutapp.data.local.RowerUser
 import ru.kirilldev.rowingutapp.data.local.Training
+import ru.kirilldev.rowingutapp.data.remote.RowerRank
 
 interface IRowingutRepository {
 
-    fun loadUserData(id: String): LiveData<RowerUser?>
+    fun loadUserData(): LiveData<RowerUser?>
 
     fun uploadUserData(rowerUser: RowerUser)
 
-    fun loadRowerList(): LiveData<List<RowerUser>?>
+    fun loadRowerRankList(): LiveData<List<RowerRank>?>
 
     fun updateRowerUser(user: RowerUser)
 

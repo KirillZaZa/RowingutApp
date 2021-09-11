@@ -8,6 +8,7 @@ import retrofit2.http.Query
 import ru.kirilldev.rowingutapp.data.local.Racing
 import ru.kirilldev.rowingutapp.data.local.RowerUser
 import ru.kirilldev.rowingutapp.data.local.Training
+import ru.kirilldev.rowingutapp.data.remote.RowerRank
 
 interface IFirebaseService {
 
@@ -19,8 +20,8 @@ interface IFirebaseService {
     @GET("/documents/todaytraining")
     suspend fun getTodayTraining(): Deferred<Training>
 
-    @GET("/documents/users")
-    suspend fun getRowerUserList(): Deferred<List<RowerUser>>
+    @GET("/documents/rowerranks")
+    suspend fun getRowerRankList(): Deferred<List<RowerRank>>
 
     @GET("/documents/users/{id}")
     suspend fun getRowerUser(@Query("id")id: String): Deferred<RowerUser>

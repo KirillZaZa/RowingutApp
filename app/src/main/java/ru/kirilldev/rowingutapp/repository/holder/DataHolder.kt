@@ -10,6 +10,7 @@ import ru.kirilldev.rowingutapp.application.RowingutApplication
 import ru.kirilldev.rowingutapp.data.local.Racing
 import ru.kirilldev.rowingutapp.data.local.RowerUser
 import ru.kirilldev.rowingutapp.data.local.Training
+import ru.kirilldev.rowingutapp.data.remote.RowerRank
 import ru.kirilldev.rowingutapp.extensions.printError
 import ru.kirilldev.rowingutapp.repository.interfaces.ILocalHolder
 import java.lang.Exception
@@ -89,27 +90,27 @@ object FirebaseDataHolder {
         return racingsLiveData
     }
 
-    fun getRowerUserList(): LiveData<List<RowerUser>?> {
-        val userList = MutableLiveData<List<RowerUser>?>()
+    fun getRowerRankList(): LiveData<List<RowerRank>?> {
+        val rowerRankList = MutableLiveData<List<RowerRank>?>()
 
         val rowerListJob = scope.launch {
             try {
-                val response: List<RowerUser>?
+                val response: List<RowerRank>?
 
                 withContext(Dispatchers.IO) {
-                    response = api.getRowerUserList().await()
+                    response = api.getRowerRankList().await()
                 }
-                userList.value = response
+                rowerRankList.value = response
             } catch (e: CancellationException) {
                 Log.e(FIREBASE_TAG, "${e.message}")
-                userList.value = null
+                rowerRankList.value = null
             }
         }
 
         rowerListJob.cancelingJob()
 
 
-        return userList
+        return rowerRankList
     }
 
     fun putRowerUser(user: RowerUser) {
@@ -223,12 +224,12 @@ object LocalDataHolder : ILocalHolder {
      * USER METHODS
      */
 
-    override fun getUserData(id: String): LiveData<RowerUser?> {
+    override fun getUserData(email: String): LiveData<RowerUser?> {
         val userData = MutableLiveData<RowerUser?>()
         val job = scope.launch {
             try {
                 withContext(Dispatchers.IO) {
-                    userData.value = dataBase.getRowerUserDao().getRowerUser(id)
+                    userData.value = dataBase.getRowerUserDao().getRowerUser()
                 }
             } catch (e: CancellationException) {
                 e.printError(LOCAL_STORAGE_TAG)

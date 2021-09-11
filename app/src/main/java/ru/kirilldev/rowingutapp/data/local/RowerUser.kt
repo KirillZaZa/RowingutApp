@@ -1,9 +1,7 @@
 package ru.kirilldev.rowingutapp.data.local
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
+import androidx.room.*
+import java.util.*
 
 
 @Entity(
@@ -14,14 +12,12 @@ data class RowerUser(
 
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "rower_id")
-    val id: String,
+    val id: String = UUID.randomUUID().toString(),
 
-    val name: String,
-
-    val hash: String,
+    val name: String? = null,
 
     @ColumnInfo(name = "rower_email")
-    val email: String,
+    val email: String? = null,
 
     val img: String? = null,
 
@@ -31,11 +27,27 @@ data class RowerUser(
 
     val height: Float? = null,
 
-    val calories: Int = 0,
+    val averageCalories: Int = 0,
 
     val averageBpm: Int = 0,
 
-    val ratingPlace: Int = 0
+    @Ignore
+    val currentRatingPlace: Int = 0,
+
+    @Ignore
+    val totalCalories: Int = 0,
+
+    @Ignore
+    val oldRatingPlace: Int = 0,
+
+    @Ignore
+    val isRatingChange: Boolean = false,
+
+    //for ui
+    @Ignore
+    val statisticItem: Boolean = true
+
+
 )
 
 

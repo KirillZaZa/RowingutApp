@@ -10,7 +10,7 @@ import ru.kirilldev.rowingutapp.viewmodels.base.BaseViewModel
 import ru.kirilldev.rowingutapp.viewmodels.interfaces.ITrainingViewModel
 
 class TrainingViewModel(savedStateHandle: SavedStateHandle) :
-    BaseViewModel<Training, TrainingViewEvent>(Training(), savedStateHandle), ITrainingViewModel {
+    BaseViewModel<Training>(Training(), savedStateHandle), ITrainingViewModel {
 
     private val repository = RowingutRepository()
 
@@ -25,36 +25,43 @@ class TrainingViewModel(savedStateHandle: SavedStateHandle) :
                 trainingType = training.trainingType
             )
         }
+
+        subscribeOnDataSource(getSnackbarData()){snackbar, state->
+            snackbar ?: return@subscribeOnDataSource null
+            state.copy(
+                isStarted = state.isStarted,
+                currentTime = state.currentTime
+            )
+        }
     }
 
+    // need to delegate this to datastore or shared prefs
+    private fun getSnackbarData(): LiveData<TrainingSnackBarData?> {
+        return MutableLiveData<TrainingSnackBarData>().apply {
+            value = TrainingSnackBarData()
+        }
+    }
 
     private fun getTraining(): LiveData<Training?> {
         return repository.loadTraining(DateUtil.getDate())
     }
 
     override fun handleStartTraining(training: Training) {
-        handleEvent(TrainingViewEvent.StartTraining())
+       updateState {
+           it.copy(isStarted = true)
+       }
     }
 
     override fun handleStopTraining(currentTraining: Training) {
-        handleEvent(TrainingViewEvent.StopTraining())
+        updateState { it.copy(isStarted = false) }
     }
 
-    override fun handleAddTraining() {
-        handleEvent(TrainingViewEvent.AddTraining())
-    }
-
-    override fun handleOpenTraining() {
-        handleEvent(TrainingViewEvent.OpenTraining())
-    }
-
-    override fun handleLastTraining(training: Training) {
-        handleEvent(TrainingViewEvent.OpenLastTraining(training))
-    }
 
     override fun handleDeleteTraining(training: Training) {
-        repository.deleteTraining(training.trainingDate!!){
-            if(it) handleEvent(TrainingViewEvent.DeleteTraining())
+        repository.deleteTraining(training.trainingDate!!) { isSucceeded->
+            if(isSucceeded){
+                resetState()
+            }
         }
     }
 
@@ -69,40 +76,25 @@ class TrainingViewModel(savedStateHandle: SavedStateHandle) :
                 trainingTime = newTraining.trainingTime
             )
         }
-        handleEvent(TrainingViewEvent.ChangeTraining())
     }
 
 
 }
 
-
-open class TrainingViewEvent {
-
-    class OpenTraining : TrainingViewEvent()
-
-    class OpenLastTraining(val training: Training) : TrainingViewEvent()
-
-    class AddTraining : TrainingViewEvent()
-
-    class StartTraining : TrainingViewEvent()
-
-    class StopTraining : TrainingViewEvent()
-
-    class DeleteTraining : TrainingViewEvent()
-
-    class ChangeTraining : TrainingViewEvent()
-
-}
+data class TrainingSnackBarData(
+    var isOpen: Boolean = false,
+    var currentTime: String? = null
+)
 
 
-class ViewModelFactory(owner: SavedStateRegistryOwner) :
+class TrainingViewModelFactory(owner: SavedStateRegistryOwner) :
     AbstractSavedStateViewModelFactory(owner, bundleOf()) {
     override fun <T : ViewModel?> create(
         key: String,
         modelClass: Class<T>,
         handle: SavedStateHandle
     ): T {
-        if(modelClass.isAssignableFrom(TrainingViewModel::class.java)){
+        if (modelClass.isAssignableFrom(TrainingViewModel::class.java)) {
             return TrainingViewModel(handle) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

@@ -3,10 +3,12 @@ package ru.kirilldev.rowingutapp.viewmodels.base
 import androidx.annotation.UiThread
 import androidx.lifecycle.*
 
-abstract class BaseViewModel<T, E>(initstate: T, private val savedStateHandle: SavedStateHandle) :
+abstract class BaseViewModel<T>(
+    private val initstate: T? = null,
+    private val savedStateHandle: SavedStateHandle,
+    private val initListState: List<T> = emptyList()
+) :
     ViewModel() {
-
-
 
 
     companion object {
@@ -17,10 +19,24 @@ abstract class BaseViewModel<T, E>(initstate: T, private val savedStateHandle: S
         value = initstate
     }
 
-    val events = MutableLiveData<Event<E>>()
+    val listState = MutableLiveData<List<T>>().apply {
+        value = initListState
+    }
+
+    //val events = MutableLiveData<Event<E>>()
 
     protected val currentState
         get() = state.value!!
+
+    protected val currentListState
+        get() = listState.value!!
+
+    fun observeListState(
+        owner: LifecycleOwner,
+        onChanged: (newState: List<T>) -> Unit
+    ){
+        listState.observe(owner, Observer { onChanged(it!!) })
+    }
 
     fun observeState(
         owner: LifecycleOwner,
@@ -28,56 +44,70 @@ abstract class BaseViewModel<T, E>(initstate: T, private val savedStateHandle: S
     ) {
         state.observe(owner, Observer { onChanged(it!!) })
     }
+//
+//    fun observeEvents(owner: LifecycleOwner, onEvent: (event: E) -> Unit) {
+//        events.observe(owner, EventObserver { onEvent(it!!) })
+//    }
+//
+//    fun handleEvent(content: E) {
+//        events.postValue(Event(content))
+//    }
 
-    fun observeEvents(owner: LifecycleOwner, onEvent: (event: E) -> Unit){
-        events.observe(owner, EventObserver{onEvent(it!!)})
-    }
-
-    fun handleEvent(content: E){
-        events.postValue(Event(content))
+    @UiThread
+    protected inline fun updateState(update: (currentState: T) -> T?) {
+        state.value = update(currentState)
     }
 
     @UiThread
-    protected inline fun updateState(update: (currentState: T) -> T){
-        state.value = update(currentState)
+    protected fun resetState(){
+        state.value = null
+    }
+
+    @UiThread
+    protected inline fun updateListState(
+        update: (currentListState: List<T>) -> List<T>
+    ){
+        listState.value = update(currentListState)
     }
 
     protected fun <S> subscribeOnDataSource(
         source: LiveData<S>,
         onChanged: (newState: S, currentState: T) -> T?
-    ){
-        state.addSource(source){
+    ) {
+        state.addSource(source) {
             state.value = onChanged(it, currentState) ?: return@addSource
         }
     }
 
-
-
-}
-
-
-
-
-class Event<out E>(private val content: E) {
-    var hasBeenHandled = false
-        private set
-
-    fun getContentIfNotHandled(): E?{
-        return if(hasBeenHandled){
-            null
-        }else{
-            hasBeenHandled = true
-            content
-        }
+    protected fun subscribeOnListDataSource(
+        source: List<T>?
+    ){
+        listState.value = source ?: return
     }
+
 }
 
 
-class EventObserver<E>(private val onEventUnhandledContent: (E) -> Unit): Observer<Event<E>>{
-    override fun onChanged(e: Event<E>?) {
-        e?.getContentIfNotHandled()?.let {
-            onEventUnhandledContent(it)
-        }
-    }
-}
+//class Event<out E>(private val content: E) {
+//    var hasBeenHandled = false
+//        private set
+//
+//    fun getContentIfNotHandled(): E? {
+//        return if (hasBeenHandled) {
+//            null
+//        } else {
+//            hasBeenHandled = true
+//            content
+//        }
+//    }
+//}
+//
+//
+//class EventObserver<E>(private val onEventUnhandledContent: (E) -> Unit) : Observer<Event<E>> {
+//    override fun onChanged(e: Event<E>?) {
+//        e?.getContentIfNotHandled()?.let {
+//            onEventUnhandledContent(it)
+//        }
+//    }
+//}
 

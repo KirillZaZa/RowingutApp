@@ -11,8 +11,8 @@ abstract class RowerUserDao {
     @Insert(entity = RowerUser::class, onConflict = OnConflictStrategy.ABORT)
     abstract suspend fun insertRowerUsers(rowerUser: RowerUser)
 
-    @Query("SELECT * FROM rower_table WHERE rower_id LIKE :id")
-    abstract suspend fun getRowerUser(id: String): RowerUser
+    @Query("SELECT * FROM rower_table")
+    abstract suspend fun getRowerUser(): RowerUser
 
     @Query("SELECT * FROM rower_table")
     abstract suspend fun getRowerList(): List<RowerUser>

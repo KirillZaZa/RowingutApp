@@ -22,5 +22,11 @@ data class Training(
     val trainingTasks: List<String>? = emptyList(),
 
     @ColumnInfo(name = "type")
-    val trainingType: String? = null
+    val trainingType: String? = null,
+
+    //fields needed for ui work
+    @Ignore
+    var isStarted: Boolean = false,
+    @Ignore
+    var currentTime: String? = null
 )

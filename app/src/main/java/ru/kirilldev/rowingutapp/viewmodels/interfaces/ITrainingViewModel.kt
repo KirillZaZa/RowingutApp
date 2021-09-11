@@ -8,12 +8,6 @@ interface ITrainingViewModel {
 
     fun handleStopTraining(currentTraining: Training)
 
-    fun handleAddTraining()
-
-    fun handleOpenTraining()
-
-    fun handleLastTraining(training: Training)
-
     fun handleDeleteTraining(training: Training)
 
     fun handleTrainingChange(newTraining: Training)
