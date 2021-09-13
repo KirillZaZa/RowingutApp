@@ -56,11 +56,25 @@ object FirebaseDataHolder {
                 trainingLiveData.value = null
             }
         }
-        callback(trainingLiveData)
         trainingJob.cancelingJob()
+
     }
 
     fun deleteTraining(date: String,isSuccessfully: (Boolean) -> Unit){
+        var success = false
+        val job = scope.launch {
+            success = try {
+                withContext(Dispatchers.IO){
+                    api.deleteTodayTraining(date)
+                }
+                true
+            }catch (e: CancellationException){
+                Log.e(FIREBASE_TAG, "${e.message}")
+                false
+            }
+        }
+        job.cancelingJob()
+        isSuccessfully(success)
 
     }
 
@@ -113,18 +127,22 @@ object FirebaseDataHolder {
         return rowerRankList
     }
 
-    fun putRowerUser(user: RowerUser) {
+    fun putRowerUser(user: RowerUser, isSuccessfully: (Boolean) -> Unit) {
+        var success = false
         val job = scope.launch {
-            try {
+            success = try {
                 withContext(Dispatchers.IO) {
                     api.putRowerUser(user)
                 }
+                true
             } catch (e: CancellationException) {
                 Log.e(FIREBASE_TAG, "${e.message}")
+                false
             }
         }
-
         job.cancelingJob()
+        isSuccessfully(success)
+
     }
 
     fun getRowerUser(id: String): LiveData<RowerUser?> {
@@ -147,30 +165,34 @@ object FirebaseDataHolder {
         return rowerUser
     }
 
-    fun updateRowerUser(newUser: RowerUser) {
+    fun updateRowerUser(newUser: RowerUser, isSuccessfully: (Boolean) -> Unit) {
+        var success = false
         val updateRowerJob = scope.launch {
-            try {
+            success = try {
                 withContext(Dispatchers.IO) {
                     api.updateRowerUser(newUser)
                 }
+                true
             } catch (e: CancellationException) {
                 Log.e(FIREBASE_TAG, "${e.message}")
+                false
             }
         }
-
         updateRowerJob.cancelingJob()
+        isSuccessfully(success)
     }
 
     fun updateTodayTraining(newTraining: Training, isSuccessfully: (Boolean) -> Unit) {
-        var success = true
+        var success = false
         val updateTrainingJob = scope.launch {
-            try {
+            success = try {
                 withContext(Dispatchers.IO) {
                     api.updateTodayTraining(newTraining.trainingDate!!)
                 }
+                true
             } catch (e: CancellationException) {
                 e.printError(FIREBASE_TAG)
-                success = false
+                false
             }
         }
         updateTrainingJob.cancelingJob()

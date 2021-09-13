@@ -8,17 +8,12 @@ fun List<RowerRank>.getSortedRowerRankList(): List<RowerRank>{
     var maxCalories = 0
     var previousRower: RowerRank
 
-    this.forEachIndexed { index, rowerRank ->
-        if(rowerRank.totalCalories > maxCalories){
-
-            maxCalories = rowerRank.totalCalories
-
-            previousRower = rowerRank
-
-
-
-        }
-    }
 
     return this
 }
+
+/**
+ *
+ */
+
+

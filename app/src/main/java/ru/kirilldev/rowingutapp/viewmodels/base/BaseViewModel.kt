@@ -4,7 +4,7 @@ import androidx.annotation.UiThread
 import androidx.lifecycle.*
 
 abstract class BaseViewModel<T>(
-    private val initstate: T? = null,
+    initstate: T? = null,
     private val savedStateHandle: SavedStateHandle,
     private val initListState: List<T> = emptyList()
 ) :
@@ -23,7 +23,7 @@ abstract class BaseViewModel<T>(
         value = initListState
     }
 
-    //val events = MutableLiveData<Event<E>>()
+//    val events = MutableLiveData<Event<Notify>>()
 
     protected val currentState
         get() = state.value!!
@@ -34,7 +34,7 @@ abstract class BaseViewModel<T>(
     fun observeListState(
         owner: LifecycleOwner,
         onChanged: (newState: List<T>) -> Unit
-    ){
+    ) {
         listState.observe(owner, Observer { onChanged(it!!) })
     }
 
@@ -44,14 +44,22 @@ abstract class BaseViewModel<T>(
     ) {
         state.observe(owner, Observer { onChanged(it!!) })
     }
-//
-//    fun observeEvents(owner: LifecycleOwner, onEvent: (event: E) -> Unit) {
+
+//    fun observeEvents(owner: LifecycleOwner, onEvent: (event: Notify) -> Unit) {
 //        events.observe(owner, EventObserver { onEvent(it!!) })
 //    }
 //
-//    fun handleEvent(content: E) {
+//    fun handleEvent(content: Notify) {
 //        events.postValue(Event(content))
 //    }
+
+    fun saveState(){
+
+    }
+
+    fun restoreState(){
+
+    }
 
     @UiThread
     protected inline fun updateState(update: (currentState: T) -> T?) {
@@ -59,14 +67,14 @@ abstract class BaseViewModel<T>(
     }
 
     @UiThread
-    protected fun resetState(){
+    protected fun resetState() {
         state.value = null
     }
 
     @UiThread
     protected inline fun updateListState(
         update: (currentListState: List<T>) -> List<T>
-    ){
+    ) {
         listState.value = update(currentListState)
     }
 
@@ -81,13 +89,13 @@ abstract class BaseViewModel<T>(
 
     protected fun subscribeOnListDataSource(
         source: List<T>?
-    ){
+    ) {
         listState.value = source ?: return
     }
 
 }
 
-
+//
 //class Event<out E>(private val content: E) {
 //    var hasBeenHandled = false
 //        private set
@@ -110,4 +118,6 @@ abstract class BaseViewModel<T>(
 //        }
 //    }
 //}
+
+
 

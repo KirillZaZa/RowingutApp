@@ -28,13 +28,23 @@
         <entry key="..\:/RowingutApp/app/src/main/res/layout/onboarding_bottombar.xml" value="0.25416666666666665" />
         <entry key="..\:/RowingutApp/app/src/main/res/layout/splash_screen.xml" value="0.25416666666666665" />
         <entry key="..\:/RowingutApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2703125" />
+        <entry key="app/src/main/res/drawable/ic_home_icon_pressed.xml" value="0.24351851851851852" />
+        <entry key="app/src/main/res/drawable/ic_pages_1.xml" value="0.24351851851851852" />
+        <entry key="app/src/main/res/drawable/ic_pages_2.xml" value="0.24351851851851852" />
+        <entry key="app/src/main/res/drawable/ic_pages_3.xml" value="0.24351851851851852" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/activity_onboarding.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_create_training.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.19207454160657528" />
         <entry key="app/src/main/res/layout/fragment_racings.xml" value="0.14628623188405798" />
         <entry key="app/src/main/res/layout/fragment_ratings.xml" value="0.2578125" />
-        <entry key="app/src/main/res/layout/fragment_start_training.xml" value="0.15081521739130435" />
+        <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.2801551088425808" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.14628623188405798" />
+        <entry key="app/src/main/res/layout/fragment_start_training.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_training.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_rating_user_position.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/onboarding_bottombar.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/training_snackbar.xml" value="0.24338805343128075" />
       </map>
     </option>

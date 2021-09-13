@@ -21,8 +21,10 @@ class RowingutRepository(
         return db.getUserData(id)
     }
 
-    override fun uploadUserData(rowerUser: RowerUser) {
-        firebase.putRowerUser(rowerUser)
+    override fun uploadUserData(rowerUser: RowerUser, isSucceeded: (Boolean) -> Unit) {
+        firebase.putRowerUser(rowerUser){
+            isSucceeded(it)
+        }
     }
 
 
@@ -30,8 +32,11 @@ class RowingutRepository(
         return firebase.getRowerRankList()
     }
 
-    override fun updateRowerUser(user: RowerUser) {
-        firebase.updateRowerUser(user)
+
+    override fun updateRowerUser(user: RowerUser, isSucceeded: (Boolean)-> Unit) {
+        firebase.updateRowerUser(user){
+            isSucceeded(it)
+        }
     }
 
     override fun uploadTrainingData(training: Training) {

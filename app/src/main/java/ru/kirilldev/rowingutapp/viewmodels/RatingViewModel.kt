@@ -5,6 +5,7 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import ru.kirilldev.rowingutapp.data.local.RowerUser
 import ru.kirilldev.rowingutapp.data.remote.RowerRank
 import ru.kirilldev.rowingutapp.extensions.getSortedRowerRankList
 import ru.kirilldev.rowingutapp.repository.RowingutRepository
@@ -26,10 +27,21 @@ class RatingViewModel(savedStateHandle: SavedStateHandle) :
     private fun getRatingList() = repository.loadRowerRankList().value
 
 
-    override fun updateRatingList() {
-        updateListState {
-            getRatingList()!!.getSortedRowerRankList()
+
+    override fun handleUpdateListRank(rowerUser: RowerUser, loading: (Boolean)-> Unit) {
+        loading(true)
+
+        repository.updateRowerUser(user = rowerUser){ isSuccessfully->
+            if(isSuccessfully){
+
+                updateListState {
+                    getRatingList()?.getSortedRowerRankList() ?: emptyList()
+                }
+
+            }else updateListState { emptyList() }
         }
+
+        loading(false)
     }
 
 

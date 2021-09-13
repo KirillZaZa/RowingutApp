@@ -124,13 +124,17 @@
         android:layout_height="wrap_content"/>
 
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_start"
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/shape_card_last_training"
         android:elevation="4dp"
+        android:text="@string/start_training_button_text"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:fontFamily="@font/gilroy_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/end_guideline"
         app:layout_constraintStart_toEndOf="@id/start_guideline"

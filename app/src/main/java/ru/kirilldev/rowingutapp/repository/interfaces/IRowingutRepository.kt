@@ -10,11 +10,11 @@ interface IRowingutRepository {
 
     fun loadUserData(): LiveData<RowerUser?>
 
-    fun uploadUserData(rowerUser: RowerUser)
+    fun uploadUserData(rowerUser: RowerUser,isSucceeded: (Boolean) -> Unit)
 
     fun loadRowerRankList(): LiveData<List<RowerRank>?>
 
-    fun updateRowerUser(user: RowerUser)
+    fun updateRowerUser(user: RowerUser, isSucceeded: (Boolean) -> Unit)
 
     fun uploadTrainingData(training: Training)
 
