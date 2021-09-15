@@ -1,7 +1,6 @@
 package ru.kirilldev.rowingutapp.repository.holder
 
 import android.util.Log
-import androidx.core.os.trace
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.*
@@ -26,7 +25,7 @@ object FirebaseDataHolder {
      */
 
     private const val FIREBASE_TAG = "firebase_tag"
-    private val scope = RowingutApplication.scope!!
+    private val scope = RowingutApplication.scope
     private val api = RetrofitInstance.api
 
     /*
@@ -57,7 +56,7 @@ object FirebaseDataHolder {
             }
         }
         trainingJob.cancelingJob()
-
+        callback(trainingLiveData)
     }
 
     fun deleteTraining(date: String,isSuccessfully: (Boolean) -> Unit){
@@ -234,8 +233,8 @@ object LocalDataHolder : ILocalHolder {
     private const val LOCAL_STORAGE_TAG = "local_storage_tag"
 
 
-    private val scope = RowingutApplication.scope!!
-    private val dataBase = RowingutApplication.database!!
+    private val scope = RowingutApplication.scope
+    private val dataBase = RowingutApplication.database
 
 
     private fun Job.cancellingJob() {

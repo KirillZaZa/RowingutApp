@@ -9,18 +9,21 @@ import ru.kirilldev.rowingutapp.room.db.RowingDatabase
 
 class RowingutApplication : Application() {
 
-    companion object {
-        var INSTANCE: RowingutApplication? = null
-        var scope: CoroutineScope? = null
-        var database: RowingDatabase? = null
+    companion object{
+        val instance by lazy{
+            RowingutApplication()
+        }
+
+        val scope by lazy{
+            CoroutineScope(Dispatchers.Main + SupervisorJob())
+        }
+
+        val database by lazy{
+            RowingDatabase.getDataBase(context = instance.applicationContext, scope)
+        }
     }
 
 
-    override fun onCreate() {
-        super.onCreate()
-        INSTANCE = this
-        scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
-        database = RowingDatabase.getDataBase(context = INSTANCE!!.applicationContext, scope!!)
-    }
+
 
 }

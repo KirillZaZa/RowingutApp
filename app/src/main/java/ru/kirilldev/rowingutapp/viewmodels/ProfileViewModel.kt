@@ -6,12 +6,14 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import ru.kirilldev.rowingutapp.data.local.RowerUser
+import ru.kirilldev.rowingutapp.extensions.toProfileData
 import ru.kirilldev.rowingutapp.repository.RowingutRepository
 import ru.kirilldev.rowingutapp.viewmodels.base.BaseViewModel
+import ru.kirilldev.rowingutapp.viewmodels.interfaces.IProfileViewModel
 import java.lang.IllegalArgumentException
 
 class ProfileViewModel(savedStateHandle: SavedStateHandle):
-    BaseViewModel<RowerUser>(RowerUser(), savedStateHandle) {
+    BaseViewModel<ProfileData>(ProfileData(), savedStateHandle), IProfileViewModel{
 
     private val repository = RowingutRepository()
 
@@ -19,6 +21,8 @@ class ProfileViewModel(savedStateHandle: SavedStateHandle):
      * Закончить работу над моделью профиля
      *
      */
+
+
 
     init {
         subscribeOnDataSource(getRowerData()){rowerUser, state->
@@ -32,7 +36,7 @@ class ProfileViewModel(savedStateHandle: SavedStateHandle):
                 height = rowerUser.height,
                 averageCalories = rowerUser.averageCalories,
                 averageBpm = rowerUser.averageBpm,
-                statisticItem = state.statisticItem
+                statisticPeriod = state.statisticPeriod
             )
         }
     }
@@ -40,11 +44,76 @@ class ProfileViewModel(savedStateHandle: SavedStateHandle):
     private fun getRowerData() = repository.loadUserData()
 
 
+    override fun handleStatistic(chosenItem: Int) {
+        updateState {
+            it.copy(
+                statisticPeriod = chosenItem
+            )
+        }
+    }
+
+    override fun handleUpdateName(updatedName: String) {
+        updateState { it.copy(name = updatedName)  }
+    }
+
+    override fun handleUpdateWeight(updatedWeight: Float) {
+        updateState { it.copy(weight = updatedWeight) }
+    }
+
+    override fun handleUpdateHeight(updatedHeight: Float) {
+        updateState { it.copy(height = updatedHeight) }
+    }
+
+    override fun handleUpdateAge(updatedAge: Int) {
+        updateState { it.copy(age = updatedAge) }
+    }
 
 
 }
 
-data class ProfileData()
+data class ProfileData(
+    val name: String? = null,
+    val email: String? = null,
+    val img: String? = null,
+    val age: Int? = 0,
+    val weight: Float? = 0f,
+    val height: Float? = 0f,
+    val averageBpm: Int = 0,
+    val averageCalories: Int = 0,
+    val statisticPeriod: Int = 0
+
+){
+    override fun equals(other: Any?): Boolean {
+        if(this === other) return true
+        if(other == null || other?.javaClass != javaClass) return false
+
+        other as ProfileData
+        if(name != other.name) return false
+        if(email != other.email) return false
+        if(img != other.img) return false
+        if(age != other.age) return false
+        if(weight != other.weight) return false
+        if(height != other.height) return false
+        if(averageBpm != other.averageBpm) return false
+        if(averageCalories != other.averageCalories) return false
+        if(statisticPeriod != other.statisticPeriod) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = name?.hashCode() ?: 0
+        result = 31 * result + (email?.hashCode() ?: 0)
+        result = 31 * result + (img?.hashCode() ?: 0)
+        result = 31 * result + (age ?: 0)
+        result = 31 * result + (weight?.hashCode() ?: 0)
+        result = 31 * result + (height?.hashCode() ?: 0)
+        result = 31 * result + averageBpm
+        result = 31 * result + averageCalories
+        result = 31 * result + statisticPeriod
+        return result
+    }
+}
 
 class ProfileViewModelFactory(
     owner: SavedStateRegistryOwner

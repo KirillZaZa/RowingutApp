@@ -36,7 +36,7 @@
         <entry key="app/src/main/res/layout/activity_onboarding.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_registration.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_create_training.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.19207454160657528" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_racings.xml" value="0.14628623188405798" />
         <entry key="app/src/main/res/layout/fragment_ratings.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.2801551088425808" />

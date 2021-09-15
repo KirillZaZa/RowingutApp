@@ -45,7 +45,7 @@ data class RowerUser(
 
     //for ui
     @Ignore
-    val statisticItem: Boolean = true
+    val statisticItem: Int = 0
 
 
 )

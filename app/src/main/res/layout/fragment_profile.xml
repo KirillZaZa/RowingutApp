@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainBackground"
-    tools:context=".ProfileFragment">
+    android:background="@color/mainBackground">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_guideline"
@@ -186,6 +185,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="64dp"
         android:layout_height="0dp"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/button_settings"
+        android:background="@drawable/ic_settings_icon"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintTop_toTopOf="@id/tv_profile_header"
+        app:layout_constraintBottom_toBottomOf="@id/tv_profile_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
