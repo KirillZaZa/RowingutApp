@@ -90,9 +90,4 @@ class RowingutRepository(
     }
 
 
-    /**
-     * @RowingutRepository implements methods for getting data from DataHolder
-     *
-     */
-
 }

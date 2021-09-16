@@ -17,10 +17,6 @@ class ProfileViewModel(savedStateHandle: SavedStateHandle):
 
     private val repository = RowingutRepository()
 
-    /**
-     * Закончить работу над моделью профиля
-     *
-     */
 
 
 

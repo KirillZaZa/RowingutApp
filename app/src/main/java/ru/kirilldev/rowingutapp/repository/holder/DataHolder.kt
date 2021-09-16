@@ -1,8 +1,11 @@
 package ru.kirilldev.rowingutapp.repository.holder
 
+import android.app.Activity
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.*
 import ru.kirilldev.rowingutapp.api.retrofit.RetrofitInstance
 import ru.kirilldev.rowingutapp.application.RowingutApplication
@@ -11,6 +14,7 @@ import ru.kirilldev.rowingutapp.data.local.RowerUser
 import ru.kirilldev.rowingutapp.data.local.Training
 import ru.kirilldev.rowingutapp.data.remote.RowerRank
 import ru.kirilldev.rowingutapp.extensions.printError
+import ru.kirilldev.rowingutapp.repository.FirebaseNotificationStates
 import ru.kirilldev.rowingutapp.repository.interfaces.ILocalHolder
 import java.lang.Exception
 import java.util.*
@@ -28,6 +32,10 @@ object FirebaseDataHolder {
     private val scope = RowingutApplication.scope
     private val api = RetrofitInstance.api
 
+    private val auth by lazy {
+        FirebaseAuth.getInstance()
+    }
+
     /*
     TODO: Need to finish the realisation of network and local contribution with data
      */
@@ -40,6 +48,68 @@ object FirebaseDataHolder {
     private fun Job.cancelingJob() {
         if (this.isCompleted) this.cancel()
     }
+
+    fun isSignedIn(callback: (Boolean) -> Unit) {
+        callback(auth.currentUser != null)
+    }
+
+    fun signUp(
+        email: String,
+        passwordHash: String,
+        callback: (String?) -> Unit
+    ) {
+        val job = scope.launch {
+            try {
+                var user: FirebaseUser? = null
+                withContext(Dispatchers.IO) {
+                    auth.createUserWithEmailAndPassword(email, passwordHash)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                user = auth.currentUser
+                            }
+                        }
+                }
+                callback(user?.email)
+            } catch (e: CancellationException) {
+                Log.e(FIREBASE_TAG, "signUp: ${e.message}")
+                callback("Error with request")
+            }
+        }
+
+        job.cancelingJob()
+    }
+
+    fun signIn(
+        callback: (String?) -> Unit,
+        email: String,
+        passwordHash: String
+    ) {
+        val job = scope.launch {
+            try {
+                var user: FirebaseUser? = null
+
+                withContext(Dispatchers.IO) {
+                    auth.signInWithEmailAndPassword(email, passwordHash)
+                        .addOnCompleteListener { task->
+                            if(task.isSuccessful) user = auth.currentUser
+                            else callback(FirebaseNotificationStates.FAILED.toString())
+                        }
+                }
+
+                callback(user?.email)
+
+            } catch (e: CancellationException) {
+
+                Log.e(FIREBASE_TAG, "signIn: ${e.message}")
+
+                callback(FirebaseNotificationStates.ERROR.toString())
+            }
+        }
+
+        job.cancelingJob()
+    }
+
+    fun signOut() = auth.signOut()
 
     fun getTodayTraining(callback: (LiveData<Training?>) -> Unit) {
         val trainingLiveData = MutableLiveData<Training?>()
@@ -59,15 +129,15 @@ object FirebaseDataHolder {
         callback(trainingLiveData)
     }
 
-    fun deleteTraining(date: String,isSuccessfully: (Boolean) -> Unit){
+    fun deleteTraining(date: String, isSuccessfully: (Boolean) -> Unit) {
         var success = false
         val job = scope.launch {
             success = try {
-                withContext(Dispatchers.IO){
+                withContext(Dispatchers.IO) {
                     api.deleteTodayTraining(date)
                 }
                 true
-            }catch (e: CancellationException){
+            } catch (e: CancellationException) {
                 Log.e(FIREBASE_TAG, "${e.message}")
                 false
             }
@@ -200,14 +270,14 @@ object FirebaseDataHolder {
     }
 
 
-    fun putTraining(training: Training, isSuccessfully: (Boolean) -> Unit){
+    fun putTraining(training: Training, isSuccessfully: (Boolean) -> Unit) {
         var success = true
         val job = scope.launch {
-            try{
-                withContext(Dispatchers.IO){
+            try {
+                withContext(Dispatchers.IO) {
                     api.putTraining(training)
                 }
-            }catch (e :Exception){
+            } catch (e: Exception) {
                 e.printError(FIREBASE_TAG)
                 success = false
                 this.cancel()
@@ -216,7 +286,6 @@ object FirebaseDataHolder {
         job.cancelingJob()
         isSuccessfully(success)
     }
-
 
 
 }
