@@ -1,9 +1,13 @@
 package ru.kirilldev.rowingutapp.viewmodels.interfaces
 
+import com.google.firebase.auth.FirebaseUser
+
 interface IRegistrationViewModel {
 
-    fun handleSignIn(callback: (Boolean)-> Unit)
+    fun handleSignIn(email: String, passwordHash: String)
 
-    fun handleSignUp()
+    fun handleSignUp(email: String, passwordHash: String)
+
+    fun handleIsSignedIn(callback: (FirebaseUser?) -> Unit)
 
 }

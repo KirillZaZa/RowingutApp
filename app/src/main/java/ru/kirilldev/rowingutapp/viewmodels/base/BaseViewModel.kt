@@ -23,7 +23,7 @@ abstract class BaseViewModel<T>(
         value = initListState
     }
 
-//    val events = MutableLiveData<Event<Notify>>()
+    val notification = MutableLiveData<Event<Notify>>()
 
     protected val currentState
         get() = state.value!!
@@ -45,13 +45,13 @@ abstract class BaseViewModel<T>(
         state.observe(owner, Observer { onChanged(it!!) })
     }
 
-//    fun observeEvents(owner: LifecycleOwner, onEvent: (event: Notify) -> Unit) {
-//        events.observe(owner, EventObserver { onEvent(it!!) })
-//    }
-//
-//    fun handleEvent(content: Notify) {
-//        events.postValue(Event(content))
-//    }
+    fun observeNotifications(owner: LifecycleOwner, onEvent: (event: Notify) -> Unit) {
+        notification.observe(owner, EventObserver { onEvent(it!!) })
+    }
+
+    fun notify(content: Notify) {
+        notification.postValue(Event(content))
+    }
 
     fun saveState(){
 
@@ -95,29 +95,44 @@ abstract class BaseViewModel<T>(
 
 }
 
-//
-//class Event<out E>(private val content: E) {
-//    var hasBeenHandled = false
-//        private set
-//
-//    fun getContentIfNotHandled(): E? {
-//        return if (hasBeenHandled) {
-//            null
-//        } else {
-//            hasBeenHandled = true
-//            content
-//        }
-//    }
-//}
-//
-//
-//class EventObserver<E>(private val onEventUnhandledContent: (E) -> Unit) : Observer<Event<E>> {
-//    override fun onChanged(e: Event<E>?) {
-//        e?.getContentIfNotHandled()?.let {
-//            onEventUnhandledContent(it)
-//        }
-//    }
-//}
+sealed class Notify{
+    abstract val msg: String
+
+    data class Error(
+        override val msg: String
+    ): Notify()
+
+    data class Success(
+        override val msg: String
+    ): Notify()
+
+
+
+
+}
+
+class Event<out E>(private val content: E) {
+    var hasBeenHandled = false
+        private set
+
+    fun getContentIfNotHandled(): E? {
+        return if (hasBeenHandled) {
+            null
+        } else {
+            hasBeenHandled = true
+            content
+        }
+    }
+}
+
+
+class EventObserver<E>(private val onEventUnhandledContent: (E) -> Unit) : Observer<Event<E>> {
+    override fun onChanged(e: Event<E>?) {
+        e?.getContentIfNotHandled()?.let {
+            onEventUnhandledContent(it)
+        }
+    }
+}
 
 
 

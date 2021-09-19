@@ -34,30 +34,31 @@ class AuthenticationFirebase {
         if (this.isCompleted) this.cancel()
     }
 
-    fun isSignedIn(callback: (Boolean) -> Unit) {
-        callback(auth.currentUser != null)
+    fun isSignedIn(): FirebaseUser?{
+        if(auth.currentUser != null) return auth.currentUser
+        return null
     }
 
     fun signUp(
         email: String,
-        password: String,
+        passwordHash: String,
         callback: (String?) -> Unit
     ) {
         val job = scope.launch {
             try {
                 var user: FirebaseUser? = null
                 withContext(Dispatchers.IO) {
-                    auth.createUserWithEmailAndPassword(email, password.createHash())
+                    auth.createUserWithEmailAndPassword(email, passwordHash)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 user = auth.currentUser
-                            }
+                            }else callback(AuthenticationStatus.FAILED.toString())
                         }
                 }
                 callback(user?.email)
             } catch (e: CancellationException) {
                 Log.e(FIREBASE_TAG, "signUp: ${e.message}")
-                callback("Error with request")
+                callback(AuthenticationStatus.ERROR.toString())
             }
         }
 
@@ -65,16 +66,16 @@ class AuthenticationFirebase {
     }
 
     fun signIn(
-        callback: (String?) -> Unit,
         email: String,
-        password: String
-    ) {
+        passwordHash: String,
+        callback: (String?) -> Unit,
+        ) {
         val job = scope.launch {
             try {
                 var user: FirebaseUser? = null
 
                 withContext(Dispatchers.IO) {
-                    auth.signInWithEmailAndPassword(email, password.createHash())
+                    auth.signInWithEmailAndPassword(email, passwordHash)
                         .addOnCompleteListener { task->
                             if(task.isSuccessful) user = auth.currentUser
                             else callback(AuthenticationStatus.FAILED.toString())
