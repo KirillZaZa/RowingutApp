@@ -1,6 +1,6 @@
 package ru.kirilldev.rowingutapp.viewmodels.interfaces
 
-import ru.kirilldev.rowingutapp.data.local.RowerUser
+import android.net.Uri
 
 interface IProfileViewModel {
 
@@ -13,5 +13,7 @@ interface IProfileViewModel {
     fun handleUpdateHeight(updatedHeight: Float)
 
     fun handleUpdateAge(updatedAge: Int)
+
+    fun handleUpdatePhoto(uri: Uri)
 
 }

@@ -1,13 +1,12 @@
-package ru.kirilldev.rowingutapp.auth
+package ru.kirilldev.rowingutapp.api.firebase.auth
 
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.*
 import ru.kirilldev.rowingutapp.application.RowingutApplication
-import ru.kirilldev.rowingutapp.extensions.createHash
 
-class AuthenticationFirebase {
+class Authentication {
 
     companion object{
 

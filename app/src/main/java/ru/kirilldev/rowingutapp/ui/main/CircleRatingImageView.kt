@@ -1,6 +1,7 @@
 package ru.kirilldev.rowingutapp.ui.main
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -27,7 +28,7 @@ class CircleRatingImageView @JvmOverloads constructor(
         binding = CustomCircleImageViewBinding.inflate(layoutInflater, this)
     }
 
-    fun setImage(){
+    fun setImage(bitmap: Bitmap){
 
     }
 

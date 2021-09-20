@@ -6,7 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import com.google.firebase.auth.FirebaseUser
-import ru.kirilldev.rowingutapp.auth.AuthenticationFirebase
+import ru.kirilldev.rowingutapp.api.firebase.auth.Authentication
 import ru.kirilldev.rowingutapp.viewmodels.base.BaseViewModel
 import ru.kirilldev.rowingutapp.viewmodels.base.Notify
 import ru.kirilldev.rowingutapp.viewmodels.interfaces.IRegistrationViewModel
@@ -18,7 +18,7 @@ class RegistrationViewModel(savedStateHandle: SavedStateHandle) :
         savedStateHandle
     ), IRegistrationViewModel{
 
-    private val authenticationFirebase = AuthenticationFirebase()
+    private val authenticationFirebase = Authentication()
 
 
 

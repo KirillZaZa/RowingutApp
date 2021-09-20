@@ -19,7 +19,7 @@ import java.util.*
 
 class RowingDataBaseCallback(
     private val database: RowingDatabase?,
-    private val scope: CoroutineScope = RowingutApplication.scope!!
+    private val scope: CoroutineScope = RowingutApplication.scope
 ) :
     RoomDatabase.Callback() {
 
@@ -65,21 +65,18 @@ class RowingDataBaseCallback(
     private fun createTestUser() = RowerUser(
         id = UUID.randomUUID().toString(),
         name = "Вася",
-        hash = "",
         email = "example@mail.com",
         img = "",
         age = 18,
         weight = 85.3f,
         height = 191.2f,
-        calories = 450,
         averageBpm = 60,
-        ratingPlace = 0
     )
 
     private fun createTestRacing() = Racing(
         racingDate = DateUtil.getDate(),
         racingPlace = "Стрела",
-        racingListInfo = RacingInfo(1000, "Командная")
+        racingListInfo = listOf(RacingInfo(1000, "Командная"))
     )
 
     private fun createTestTraining() = Training(

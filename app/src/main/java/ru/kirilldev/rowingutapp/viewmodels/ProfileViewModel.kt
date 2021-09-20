@@ -1,14 +1,17 @@
 package ru.kirilldev.rowingutapp.viewmodels
 
+import android.graphics.Bitmap
+import android.net.Uri
 import androidx.core.os.bundleOf
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
-import ru.kirilldev.rowingutapp.data.local.RowerUser
-import ru.kirilldev.rowingutapp.extensions.toProfileData
+import ru.kirilldev.rowingutapp.api.firebase.storage.ImageStorage
+import ru.kirilldev.rowingutapp.api.firebase.storage.Status
 import ru.kirilldev.rowingutapp.repository.RowingutRepository
 import ru.kirilldev.rowingutapp.viewmodels.base.BaseViewModel
+import ru.kirilldev.rowingutapp.viewmodels.base.Notify
 import ru.kirilldev.rowingutapp.viewmodels.interfaces.IProfileViewModel
 import java.lang.IllegalArgumentException
 
@@ -16,7 +19,7 @@ class ProfileViewModel(savedStateHandle: SavedStateHandle):
     BaseViewModel<ProfileData>(ProfileData(), savedStateHandle), IProfileViewModel{
 
     private val repository = RowingutRepository()
-
+    private val imageStorage  = ImageStorage()
 
 
 
@@ -62,6 +65,14 @@ class ProfileViewModel(savedStateHandle: SavedStateHandle):
 
     override fun handleUpdateAge(updatedAge: Int) {
         updateState { it.copy(age = updatedAge) }
+    }
+
+    override fun handleUpdatePhoto(uri: Uri) {
+        imageStorage.uploadImage(uri){
+            if (it == Status.SUCCESS.name){
+                imageStorage.saveImageToInternalStorage(uri)
+            } else notify(Notify.Error(it))
+        }
     }
 
 

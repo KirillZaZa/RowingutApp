@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "438176412572",
+    "project_id": "rowingutapp",
+    "storage_bucket": "rowingutapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438176412572:android:5cae8c55c3c1c5ff8d4e59",
+        "android_client_info": {
+          "package_name": "ru.kirilldev.rowingutapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "438176412572-jn0sae2rthhajssvrkpkdgtnro8v4hh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq-r9c6xdw6X8neeg6w1gNRo9xviPbMGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "438176412572-jn0sae2rthhajssvrkpkdgtnro8v4hh0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
