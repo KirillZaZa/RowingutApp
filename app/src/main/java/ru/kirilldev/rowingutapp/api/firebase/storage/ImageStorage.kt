@@ -1,6 +1,7 @@
 package ru.kirilldev.rowingutapp.api.firebase.storage
 
 import android.content.Context
+import android.content.ContextWrapper
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
@@ -15,11 +16,12 @@ import com.firebase.ui.storage.images.FirebaseImageLoader
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import ru.kirilldev.rowingutapp.application.RowingutApplication
+import ru.kirilldev.rowingutapp.extensions.uriToBitmap
+import java.io.File
+import java.io.FileNotFoundException
+import java.io.IOException
 import java.io.InputStream
 import kotlin.random.Random
 
@@ -41,19 +43,25 @@ class ImageStorage {
 
 
 
-    fun saveImageToInternalStorage(uri: Uri){
-        scope.launch {
-
-            try {
-                withContext(Dispatchers.IO){
-
-                }
-            }catch (e : CancellationException){
-
-            }
-
-        }
-    }
+//    fun saveImageToInternalStorage(uri: Uri){
+//        scope.launch(Dispatchers.IO) {
+//            try {
+//                val cWrapper = ContextWrapper(context.applicationContext)
+//                val directory = cWrapper.getDir("images", Context.MODE_PRIVATE)
+//                val path = File(directory,"")
+//                val bitmap = uri.uriToBitmap(context)
+//
+//
+//
+//            }catch (e: Throwable){
+//                Log.e(STORAGE_TAG, "saveImageToInternalStorage: ${e.message}")
+//            }
+//        }
+//    }
+//
+//    fun getImageFromInternalStorage(path: String): Bitmap{
+//
+//    }
 
     fun uploadImage(
         imageUri: Uri,
@@ -94,8 +102,8 @@ class ImageStorage {
 
     }
 
-    fun downloadImage(fileName: String, callback: (Bitmap?) -> Unit) {
-
+    fun downloadImage(fileName: String?, callback: (Bitmap?) -> Unit) {
+        fileName ?: return
         scope.launch {
 
             try {

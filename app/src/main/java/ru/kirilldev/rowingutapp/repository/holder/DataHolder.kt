@@ -28,11 +28,6 @@ object FirebaseDataHolder {
     private val scope = RowingutApplication.scope
     private val api = RetrofitInstance.api
 
-    private val auth by lazy {
-        FirebaseAuth.getInstance()
-    }
-
-
 
     private fun Job.cancelingJob() {
         if (this.isCompleted) this.cancel()

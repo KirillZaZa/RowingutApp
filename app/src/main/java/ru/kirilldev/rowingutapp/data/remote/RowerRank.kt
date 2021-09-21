@@ -1,15 +1,14 @@
 package ru.kirilldev.rowingutapp.data.remote
 
+import android.graphics.Bitmap
 
-/**
- *
- * Need to add photo field
- */
 
 data class RowerRank(
     val id: String? = null,
 
     val name: String? = null,
+
+    val img: String? = null,
 
     val currentRatingPlace: Int = 0,
 
@@ -17,5 +16,8 @@ data class RowerRank(
 
     val oldRatingPlace: Int = 0,
 
-    val isRatingChange: Boolean = false
+    val isRatingChange: Boolean = false,
+
+    //ui
+    var imageBitmap: Bitmap? = null
 )

@@ -5,7 +5,8 @@ import ru.kirilldev.rowingutapp.data.local.RowerUser
 interface IRatingViewModel {
 
 
-    fun handleUpdateListRank(rowerUser: RowerUser, loading: (Boolean) -> Unit)
+    fun handleUpdateListRank(rowerUser: RowerUser)
 
+    fun handleLoadImages(position: Int)
 
 }

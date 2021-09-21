@@ -5,6 +5,7 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import ru.kirilldev.rowingutapp.api.firebase.storage.ImageStorage
 import ru.kirilldev.rowingutapp.data.local.RowerUser
 import ru.kirilldev.rowingutapp.data.remote.RowerRank
 import ru.kirilldev.rowingutapp.extensions.getSortedRowerRankList
@@ -19,29 +20,35 @@ class RatingViewModel(savedStateHandle: SavedStateHandle) :
     ), IRatingViewModel {
 
     private val repository = RowingutRepository()
+    private val imageStorage = ImageStorage()
 
     init {
         subscribeOnListDataSource(getRatingList())
     }
 
-    private fun getRatingList() = repository.loadRowerRankList().value
+    private fun getRatingList() =
+        repository.loadRowerRankList().value?.getSortedRowerRankList() ?: emptyList()
 
 
 
-    override fun handleUpdateListRank(rowerUser: RowerUser, loading: (Boolean)-> Unit) {
-        loading(true)
-
+    override fun handleUpdateListRank(rowerUser: RowerUser) {
         repository.updateRowerUser(user = rowerUser){ isSuccessfully->
             if(isSuccessfully){
 
                 updateListState {
-                    getRatingList()?.getSortedRowerRankList() ?: emptyList()
+                    getRatingList().getSortedRowerRankList()
                 }
 
             }else updateListState { emptyList() }
         }
+    }
 
-        loading(false)
+    override fun handleLoadImages(position: Int) {
+        currentListState.forEach { rower->
+            imageStorage.downloadImage(rower.img){ image->
+                rower.imageBitmap = image
+            }
+        }
     }
 
 

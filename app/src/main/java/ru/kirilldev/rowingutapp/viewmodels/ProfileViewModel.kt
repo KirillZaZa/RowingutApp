@@ -70,7 +70,7 @@ class ProfileViewModel(savedStateHandle: SavedStateHandle):
     override fun handleUpdatePhoto(uri: Uri) {
         imageStorage.uploadImage(uri){
             if (it == Status.SUCCESS.name){
-                imageStorage.saveImageToInternalStorage(uri)
+                notify(Notify.Success(it))
             } else notify(Notify.Error(it))
         }
     }
