@@ -1,12 +1,12 @@
 package ru.kirilldev.rowingutapp.viewmodels
 
 import androidx.core.os.bundleOf
-import androidx.lifecycle.AbstractSavedStateViewModelFactory
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import androidx.savedstate.SavedStateRegistryOwner
 import com.google.firebase.auth.FirebaseUser
 import ru.kirilldev.rowingutapp.api.firebase.auth.Authentication
+import ru.kirilldev.rowingutapp.extensions.checkPasswordLength
+import ru.kirilldev.rowingutapp.extensions.isPasswordValid
 import ru.kirilldev.rowingutapp.viewmodels.base.BaseViewModel
 import ru.kirilldev.rowingutapp.viewmodels.base.Notify
 import ru.kirilldev.rowingutapp.viewmodels.interfaces.IRegistrationViewModel
@@ -16,39 +16,62 @@ class RegistrationViewModel(savedStateHandle: SavedStateHandle) :
     BaseViewModel<RegistrationData>(
         RegistrationData(),
         savedStateHandle
-    ), IRegistrationViewModel{
+    ), IRegistrationViewModel {
 
     private val authenticationFirebase = Authentication()
 
 
-
-    override fun handleSignIn(email: String, passwordHash: String) {
+    override fun handleSignIn(email: String, password: String) {
         var notification: Notify? = null
+        when {
+            password.isPasswordValid() -> {
 
-        authenticationFirebase.signIn(email, passwordHash){
+                notification = Notify.Error(ValidationNotifies.PasswordValidationError().message)
 
-            notification = when(it){
-                email -> Notify.Success(it)
-                else -> Notify.Error(it!!)
             }
+            password.checkPasswordLength() -> {
 
+                notification = Notify.Error(ValidationNotifies.PasswordLengthError().message)
+
+            }
+            else -> {
+                authenticationFirebase.signUp(email, password) {
+
+                    notification = when (it) {
+                        email -> Notify.Success(it)
+                        else -> Notify.Error(it!!)
+                    }
+
+                }
+            }
         }
-
         notify(notification!!)
     }
 
-    override fun handleSignUp(email: String, passwordHash: String) {
+    override fun handleSignUp(email: String, password: String) {
         var notification: Notify? = null
+        when {
+            password.isPasswordValid() -> {
 
-        authenticationFirebase.signUp(email, passwordHash){
+                notification = Notify.Error(ValidationNotifies.PasswordValidationError().message)
 
-            notification = when(it){
-                email -> Notify.Success(it)
-                else -> Notify.Error(it!!)
             }
+            password.checkPasswordLength() -> {
 
+                notification = Notify.Error(ValidationNotifies.PasswordLengthError().message)
+
+            }
+            else -> {
+                authenticationFirebase.signUp(email, password) {
+
+                    notification = when (it) {
+                        email -> Notify.Success(it)
+                        else -> Notify.Error(it!!)
+                    }
+
+                }
+            }
         }
-
         notify(notification!!)
     }
 
@@ -56,22 +79,49 @@ class RegistrationViewModel(savedStateHandle: SavedStateHandle) :
     override fun handleIsSignedIn(callback: (FirebaseUser?) -> Unit) =
         callback(authenticationFirebase.isSignedIn())
 
+    override fun handlePage(position: Int) {
+        updateState { it.copy(currentPage = position) }
+    }
+
+    override fun handleIsPasswordsEquals(password: String, confirmedPassword: String) {
+        notify(Notify.Error(ValidationNotifies.EmailValidationError().message))
+    }
+
+
+}
+
+sealed class ValidationNotifies{
+    abstract val message: String
+
+    data class PasswordLengthError(
+        override val message: String = "Пароль должен содержать минимум 6 символов"
+    ): ValidationNotifies()
+
+    data class PasswordValidationError(
+        override val message: String = "Пароль должен содержать спецсимволы\n " +
+                                        "и минимум одну заглавную букву"
+    ): ValidationNotifies()
+
+    data class EmailValidationError(
+        override val message: String = "Почта введена неверно"
+    ): ValidationNotifies()
 }
 
 data class RegistrationData(
     val currentPage: Int = 0,
-    val email: String? = null
+    val email: String? = null,
+    val password: String? = null
 )
 
 class ActivityRegistrationViewModelFactory(
     owner: SavedStateRegistryOwner
-): AbstractSavedStateViewModelFactory(owner, bundleOf()){
+) : AbstractSavedStateViewModelFactory(owner, bundleOf()) {
     override fun <T : ViewModel?> create(
         key: String,
         modelClass: Class<T>,
         handle: SavedStateHandle
     ): T {
-        if(modelClass.isAssignableFrom(RegistrationViewModel::class.java)){
+        if (modelClass.isAssignableFrom(RegistrationViewModel::class.java)) {
             return RegistrationViewModel(handle) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

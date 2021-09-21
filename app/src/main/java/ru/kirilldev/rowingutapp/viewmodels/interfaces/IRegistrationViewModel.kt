@@ -4,10 +4,15 @@ import com.google.firebase.auth.FirebaseUser
 
 interface IRegistrationViewModel {
 
-    fun handleSignIn(email: String, passwordHash: String)
+    fun handleSignIn(email: String, password: String)
 
-    fun handleSignUp(email: String, passwordHash: String)
+    fun handleSignUp(email: String, password: String)
 
     fun handleIsSignedIn(callback: (FirebaseUser?) -> Unit)
+
+    fun handlePage(position: Int)
+
+    fun handleIsPasswordsEquals(password: String, confirmedPassword: String)
+
 
 }

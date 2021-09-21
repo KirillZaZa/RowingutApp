@@ -5,6 +5,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.*
 import ru.kirilldev.rowingutapp.application.RowingutApplication
+import ru.kirilldev.rowingutapp.extensions.createHash
 
 class Authentication {
 
@@ -40,14 +41,14 @@ class Authentication {
 
     fun signUp(
         email: String,
-        passwordHash: String,
+        password: String,
         callback: (String?) -> Unit
     ) {
         val job = scope.launch {
             try {
                 var user: FirebaseUser? = null
                 withContext(Dispatchers.IO) {
-                    auth.createUserWithEmailAndPassword(email, passwordHash)
+                    auth.createUserWithEmailAndPassword(email, password.createHash())
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 user = auth.currentUser
@@ -66,7 +67,7 @@ class Authentication {
 
     fun signIn(
         email: String,
-        passwordHash: String,
+        password: String,
         callback: (String?) -> Unit,
         ) {
         val job = scope.launch {
@@ -74,7 +75,7 @@ class Authentication {
                 var user: FirebaseUser? = null
 
                 withContext(Dispatchers.IO) {
-                    auth.signInWithEmailAndPassword(email, passwordHash)
+                    auth.signInWithEmailAndPassword(email, password.createHash())
                         .addOnCompleteListener { task->
                             if(task.isSuccessful) user = auth.currentUser
                             else callback(AuthenticationStatus.FAILED.toString())
