@@ -1,4 +1,4 @@
-package ru.kirilldev.rowingutapp.room.exception
+package ru.kirilldev.rowingutapp.data.room.exception
 
 import java.lang.Exception
 

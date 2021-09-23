@@ -1,4 +1,4 @@
-package ru.kirilldev.rowingutapp.repository.interfaces
+package ru.kirilldev.rowingutapp.data.repository.interfaces
 
 import androidx.lifecycle.LiveData
 import ru.kirilldev.rowingutapp.data.local.Racing
@@ -8,7 +8,7 @@ import ru.kirilldev.rowingutapp.data.local.Training
 interface ILocalHolder {
 
 
-    fun getUserData(id: String): LiveData<RowerUser?>
+    fun getUserData(email: String): LiveData<RowerUser?>
 
     fun putUserData(rowerUser: RowerUser)
 

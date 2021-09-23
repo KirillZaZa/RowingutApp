@@ -1,88 +1,77 @@
 package ru.kirilldev.rowingutapp.presentation.intro
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
+import androidx.activity.viewModels
 import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.widget.ViewPager2
+import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.kirilldev.rowingutapp.R
+import ru.kirilldev.rowingutapp.databinding.ActivityOnBoardingBinding
 import ru.kirilldev.rowingutapp.presentation.intro.adapter.IntroViewPagerAdapter
-import ru.kirilldev.rowingutapp.presentation.registration.RegistrationActivity
+import ru.kirilldev.rowingutapp.viewmodels.ActivityOnBoardingData
+import ru.kirilldev.rowingutapp.viewmodels.OnBoardingViewModel
+import ru.kirilldev.rowingutapp.viewmodels.OnBoardingViewModelFactory
 
 
-class RowingutIntroActivity : FragmentActivity(){
-//
-//    private lateinit var viewpager: ViewPager2
-//    private lateinit var pagerAdapter: IntroViewPagerAdapter
-//    private lateinit var bottombar: View
-//    private lateinit var buttonNext: View
-//
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_onboarding)
-//        initializeViews()
-//        setupViewPager()
-//        updateBottombar()
-//        setListeners()
-//    }
-//
-//
-//
-//    private fun initializeViews(){
-//        bottombar = bottombarDown.getChildAt(0)
-//        buttonNext = bottombarDown.getChildAt(1)
-//    }
-//
-//    private fun setListeners(){
-//        buttonNext.setOnClickListener(this)
-//    }
-//
-//    private fun setupViewPager(){
-//        viewpager = viewpager2
-//        pagerAdapter = IntroViewPagerAdapter(this)
-//        viewpager.adapter = pagerAdapter
-//
-//    }
-//
-//    private fun updateBottombar(){
-//        viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-//            override fun onPageSelected(position: Int) {
-//                when(position){
-//                    0 -> (bottombar as ImageView).setImageResource(R.drawable.ic_pages_1)
-//                    1 -> (bottombar as ImageView).setImageResource(R.drawable.ic_pages_2)
-//                    2 -> {
-//                        (bottombar as ImageView).setImageResource(R.drawable.ic_pages_3)
-//
-//                    }
-//                    else -> (bottombar as ImageView).setImageResource(R.drawable.ic_pages_1)
-//                }
-//
-//                super.onPageSelected(position)
-//            }
-//        })
-//    }
-//
-//
-//    override fun onBackPressed() {
-//        if(viewpager.currentItem != 0){
-//            viewpager.currentItem--
-//        }else{
-//            finishAndRemoveTask()
-//        }
-//    }
-//
-//    override fun onClick(v: View?) {
-//        if(viewpager.currentItem < 2){
-//            viewpager.currentItem++
-//        }else{
-//            val intent = Intent(this, RegistrationActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-//        }
-//    }
+class RowingutIntroActivity : FragmentActivity(R.layout.activity_on_boarding),
+    View.OnClickListener {
+
+    private val viewModel: OnBoardingViewModel by viewModels { OnBoardingViewModelFactory(this) }
+    private val viewBinding by viewBinding(ActivityOnBoardingBinding::bind)
+    private val vbBottombar
+        get() = viewBinding.bottombarDown.binding
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_on_boarding)
+        setupViewPager()
+        setListeners()
+
+        viewModel.observeState(this) {
+            renderCurrentPage(it)
+        }
+    }
+
+    private fun setListeners() {
+        vbBottombar.nextPageButton.setOnClickListener(this)
+    }
+
+    private fun setupViewPager(){
+        val introAdapter = IntroViewPagerAdapter(this)
+
+        viewBinding.viewpager2
+            .adapter = introAdapter
+
+        viewBinding.viewpager2.isUserInputEnabled = false
+
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        viewModel.saveState()
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        viewModel.restoreState()
+        super.onRestoreInstanceState(savedInstanceState)
+    }
+
+    override fun onClick(v: View?) {
+        v ?: return
+        when(v){
+            vbBottombar.nextPageButton -> {
+                viewModel.handleCurrentPage(
+                    viewBinding.viewpager2.currentItem++
+                )
+            }
+        }
+    }
+
+    private fun renderCurrentPage(data: ActivityOnBoardingData) {
+        viewBinding.viewpager2.currentItem = data.currentPage
+    }
+
 
 
 }

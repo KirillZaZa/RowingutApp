@@ -1,7 +1,6 @@
-package ru.kirilldev.rowingutapp.api.firebase.storage
+package ru.kirilldev.rowingutapp.data.firebase.storage
 
 import android.content.Context
-import android.content.ContextWrapper
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
@@ -18,10 +17,6 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.*
 import ru.kirilldev.rowingutapp.application.RowingutApplication
-import ru.kirilldev.rowingutapp.extensions.uriToBitmap
-import java.io.File
-import java.io.FileNotFoundException
-import java.io.IOException
 import java.io.InputStream
 import kotlin.random.Random
 

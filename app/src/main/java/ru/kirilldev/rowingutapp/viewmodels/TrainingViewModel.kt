@@ -4,7 +4,7 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.*
 import androidx.savedstate.SavedStateRegistryOwner
 import ru.kirilldev.rowingutapp.data.local.Training
-import ru.kirilldev.rowingutapp.repository.RowingutRepository
+import ru.kirilldev.rowingutapp.data.repository.RowingutRepository
 import ru.kirilldev.rowingutapp.utils.DateUtil
 import ru.kirilldev.rowingutapp.viewmodels.base.BaseViewModel
 import ru.kirilldev.rowingutapp.viewmodels.interfaces.ITrainingViewModel

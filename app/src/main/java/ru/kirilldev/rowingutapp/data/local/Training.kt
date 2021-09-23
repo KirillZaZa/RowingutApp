@@ -1,7 +1,7 @@
 package ru.kirilldev.rowingutapp.data.local
 
 import androidx.room.*
-import ru.kirilldev.rowingutapp.room.typeconverter.ListTypeConverter
+import ru.kirilldev.rowingutapp.data.room.typeconverter.ListTypeConverter
 
 
 @Entity(tableName = "training_table", indices = [Index(value = ["training_date"], unique = true)])

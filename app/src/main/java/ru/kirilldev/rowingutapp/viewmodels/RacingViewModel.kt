@@ -5,7 +5,7 @@ import androidx.lifecycle.*
 import androidx.savedstate.SavedStateRegistryOwner
 import ru.kirilldev.rowingutapp.data.local.Racing
 import ru.kirilldev.rowingutapp.data.local.RacingInfo
-import ru.kirilldev.rowingutapp.repository.RowingutRepository
+import ru.kirilldev.rowingutapp.data.repository.RowingutRepository
 import ru.kirilldev.rowingutapp.viewmodels.base.BaseViewModel
 import ru.kirilldev.rowingutapp.viewmodels.interfaces.IRacingViewModel
 import java.lang.IllegalArgumentException

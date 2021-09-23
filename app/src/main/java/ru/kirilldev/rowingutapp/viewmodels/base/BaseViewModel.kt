@@ -12,7 +12,8 @@ abstract class BaseViewModel<T>(
 
 
     companion object {
-        private const val SAVED_STATE_KEY: String = "savedstatekey"
+        private const val SAVED_STATE_KEY: String = "saved_state_key"
+        private const val SAVED_STATE_LIST_KEY: String = "saved_state_list_key"
     }
 
     val state = MediatorLiveData<T>().apply {
@@ -54,11 +55,19 @@ abstract class BaseViewModel<T>(
     }
 
     fun saveState(){
-
+        savedStateHandle.set(SAVED_STATE_KEY, currentState)
+        savedStateHandle.set(SAVED_STATE_LIST_KEY, currentListState)
     }
 
     fun restoreState(){
+        val restoredState = savedStateHandle.get<T>(SAVED_STATE_KEY)
+        val restoredListState = savedStateHandle.get<List<T>>(SAVED_STATE_LIST_KEY)
 
+        restoredState ?: return
+        restoredListState ?: return
+
+        state.value = restoredState
+        listState.value = restoredListState
     }
 
     @UiThread

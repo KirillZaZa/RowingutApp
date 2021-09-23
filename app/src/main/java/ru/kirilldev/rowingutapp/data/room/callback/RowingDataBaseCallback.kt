@@ -1,4 +1,4 @@
-package ru.kirilldev.rowingutapp.room.callback
+package ru.kirilldev.rowingutapp.data.room.callback
 
 import android.util.Log
 import androidx.room.RoomDatabase
@@ -9,12 +9,11 @@ import ru.kirilldev.rowingutapp.data.local.Racing
 import ru.kirilldev.rowingutapp.data.local.RacingInfo
 import ru.kirilldev.rowingutapp.data.local.RowerUser
 import ru.kirilldev.rowingutapp.data.local.Training
-import ru.kirilldev.rowingutapp.room.dao.RacingDao
-import ru.kirilldev.rowingutapp.room.dao.RowerUserDao
-import ru.kirilldev.rowingutapp.room.dao.TrainingDao
-import ru.kirilldev.rowingutapp.room.db.RowingDatabase
+import ru.kirilldev.rowingutapp.data.room.dao.RacingDao
+import ru.kirilldev.rowingutapp.data.room.dao.RowerUserDao
+import ru.kirilldev.rowingutapp.data.room.dao.TrainingDao
+import ru.kirilldev.rowingutapp.data.room.db.RowingDatabase
 import ru.kirilldev.rowingutapp.utils.DateUtil
-import java.text.SimpleDateFormat
 import java.util.*
 
 class RowingDataBaseCallback(

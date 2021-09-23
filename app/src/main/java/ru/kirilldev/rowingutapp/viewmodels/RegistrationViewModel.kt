@@ -4,7 +4,8 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.*
 import androidx.savedstate.SavedStateRegistryOwner
 import com.google.firebase.auth.FirebaseUser
-import ru.kirilldev.rowingutapp.api.firebase.auth.Authentication
+import ru.kirilldev.rowingutapp.data.firebase.auth.Authentication
+import ru.kirilldev.rowingutapp.data.repository.RowingutRepository
 import ru.kirilldev.rowingutapp.extensions.checkPasswordLength
 import ru.kirilldev.rowingutapp.extensions.isPasswordValid
 import ru.kirilldev.rowingutapp.viewmodels.base.BaseViewModel
@@ -18,7 +19,7 @@ class RegistrationViewModel(savedStateHandle: SavedStateHandle) :
         savedStateHandle
     ), IRegistrationViewModel {
 
-    private val authenticationFirebase = Authentication()
+    private val repository = RowingutRepository()
 
 
     override fun handleSignIn(email: String, password: String) {
@@ -35,11 +36,11 @@ class RegistrationViewModel(savedStateHandle: SavedStateHandle) :
 
             }
             else -> {
-                authenticationFirebase.signUp(email, password) {
+                repository.signUp(email, password) {
 
                     notification = when (it) {
                         email -> Notify.Success(it)
-                        else -> Notify.Error(it!!)
+                        else -> Notify.Error(it)
                     }
 
                 }
@@ -62,11 +63,11 @@ class RegistrationViewModel(savedStateHandle: SavedStateHandle) :
 
             }
             else -> {
-                authenticationFirebase.signUp(email, password) {
+                repository.signUp(email, password) {
 
                     notification = when (it) {
                         email -> Notify.Success(it)
-                        else -> Notify.Error(it!!)
+                        else -> Notify.Error(it)
                     }
 
                 }
@@ -75,9 +76,6 @@ class RegistrationViewModel(savedStateHandle: SavedStateHandle) :
         notify(notification!!)
     }
 
-
-    override fun handleIsSignedIn(callback: (FirebaseUser?) -> Unit) =
-        callback(authenticationFirebase.isSignedIn())
 
     override fun handlePage(position: Int) {
         updateState { it.copy(currentPage = position) }

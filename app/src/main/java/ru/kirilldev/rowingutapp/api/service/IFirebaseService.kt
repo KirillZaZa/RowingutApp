@@ -12,7 +12,6 @@ import ru.kirilldev.rowingutapp.data.remote.RowerRank
 
 interface IFirebaseService {
 
-    //define calls to firebase for getting the data
 
     @GET("/documents/racings")
     suspend fun getRacingsList(): Deferred<List<Racing>>
@@ -23,11 +22,14 @@ interface IFirebaseService {
     @GET("/documents/rowerranks")
     suspend fun getRowerRankList(): Deferred<List<RowerRank>>
 
-    @GET("/documents/users/{id}")
-    suspend fun getRowerUser(@Query("id")id: String): Deferred<RowerUser>
+    @PUT("/documents/rowerranks")
+    suspend fun putRowerRank(rowerRank: RowerRank)
 
-    @PUT("/documents/users")
-    suspend fun updateRowerUser(newUser: RowerUser)
+    @GET("/documents/users/{id}")
+    suspend fun getRowerUser(@Query("email")email: String): Deferred<RowerUser>
+
+    @PUT("/documents/users/{email}")
+    suspend fun updateRowerUser(@Query("email")newUser: RowerUser)
 
     @PUT("/documents/users")
     suspend fun putRowerUser(user: RowerUser)
@@ -37,7 +39,6 @@ interface IFirebaseService {
 
     @PUT("/documents/todayTraining/{date}")
     suspend fun updateTodayTraining(@Query("date")date: String)
-
 
     @DELETE("documents/todayTraining/{date}")
     suspend fun deleteTodayTraining(@Query("date")date: String)

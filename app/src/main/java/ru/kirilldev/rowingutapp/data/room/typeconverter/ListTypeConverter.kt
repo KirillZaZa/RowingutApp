@@ -1,4 +1,4 @@
-package ru.kirilldev.rowingutapp.room.typeconverter
+package ru.kirilldev.rowingutapp.data.room.typeconverter
 
 import androidx.room.TypeConverter
 

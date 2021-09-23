@@ -1,15 +1,14 @@
 package ru.kirilldev.rowingutapp.viewmodels
 
-import android.graphics.Bitmap
 import android.net.Uri
 import androidx.core.os.bundleOf
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
-import ru.kirilldev.rowingutapp.api.firebase.storage.ImageStorage
-import ru.kirilldev.rowingutapp.api.firebase.storage.Status
-import ru.kirilldev.rowingutapp.repository.RowingutRepository
+import ru.kirilldev.rowingutapp.data.firebase.storage.ImageStorage
+import ru.kirilldev.rowingutapp.data.firebase.storage.Status
+import ru.kirilldev.rowingutapp.data.repository.RowingutRepository
 import ru.kirilldev.rowingutapp.viewmodels.base.BaseViewModel
 import ru.kirilldev.rowingutapp.viewmodels.base.Notify
 import ru.kirilldev.rowingutapp.viewmodels.interfaces.IProfileViewModel

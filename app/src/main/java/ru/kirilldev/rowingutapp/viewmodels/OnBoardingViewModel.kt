@@ -15,8 +15,6 @@ class OnBoardingViewModel(savedStateHandle: SavedStateHandle) :
         savedStateHandle
     ), IOnBoardingViewModel {
 
-
-
     override fun handleCurrentPage(page: Int) {
         updateState { it.copy(currentPage = page) }
     }
@@ -27,7 +25,7 @@ data class ActivityOnBoardingData(
 )
 
 
-class ActivityOnBoardingViewModelFactory(
+class OnBoardingViewModelFactory(
     owner: SavedStateRegistryOwner
 ): AbstractSavedStateViewModelFactory(owner, bundleOf()){
     override fun <T : ViewModel?> create(

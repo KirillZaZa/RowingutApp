@@ -1,4 +1,4 @@
-package ru.kirilldev.rowingutapp.room.dao
+package ru.kirilldev.rowingutapp.data.room.dao
 
 import androidx.room.*
 import ru.kirilldev.rowingutapp.data.local.RowerUser

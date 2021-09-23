@@ -1,12 +1,9 @@
-package ru.kirilldev.rowingutapp.repository.holder
+package ru.kirilldev.rowingutapp.data.repository.holder
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.*
-import ru.kirilldev.rowingutapp.api.firebase.auth.AuthenticationStatus
 import ru.kirilldev.rowingutapp.api.retrofit.RetrofitInstance
 import ru.kirilldev.rowingutapp.application.RowingutApplication
 import ru.kirilldev.rowingutapp.data.local.Racing
@@ -14,7 +11,7 @@ import ru.kirilldev.rowingutapp.data.local.RowerUser
 import ru.kirilldev.rowingutapp.data.local.Training
 import ru.kirilldev.rowingutapp.data.remote.RowerRank
 import ru.kirilldev.rowingutapp.extensions.printError
-import ru.kirilldev.rowingutapp.repository.interfaces.ILocalHolder
+import ru.kirilldev.rowingutapp.data.repository.interfaces.ILocalHolder
 import java.lang.Exception
 
 object FirebaseDataHolder {
@@ -31,6 +28,18 @@ object FirebaseDataHolder {
 
     private fun Job.cancelingJob() {
         if (this.isCompleted) this.cancel()
+    }
+
+    fun putRowerRank(rowerRank: RowerRank){
+        val job = scope.launch {
+            try {
+                withContext(Dispatchers.IO){
+                    api.putRowerRank(rowerRank)
+                }
+            }catch (e: CancellationException){
+                e.printError(FIREBASE_TAG)
+            }
+        }
     }
 
     fun getTodayTraining(callback: (LiveData<Training?>) -> Unit) {
@@ -107,7 +116,7 @@ object FirebaseDataHolder {
                 }
                 rowerRankList.value = response
             } catch (e: CancellationException) {
-                Log.e(FIREBASE_TAG, "${e.message}")
+                e.printError(FIREBASE_TAG)
                 rowerRankList.value = null
             }
         }
@@ -127,7 +136,7 @@ object FirebaseDataHolder {
                 }
                 true
             } catch (e: CancellationException) {
-                Log.e(FIREBASE_TAG, "${e.message}")
+                e.printError(FIREBASE_TAG)
                 false
             }
         }
@@ -136,13 +145,13 @@ object FirebaseDataHolder {
 
     }
 
-    fun getRowerUser(id: String): LiveData<RowerUser?> {
+    fun getRowerUser(email: String, callback: (LiveData<RowerUser?>) -> Unit){
         val rowerUser = MutableLiveData<RowerUser?>()
         val userJob = scope.launch {
             try {
-                val response: RowerUser?
+                val response: RowerUser
                 withContext(Dispatchers.IO) {
-                    response = api.getRowerUser(id).await()
+                    response = api.getRowerUser(email).await()
                 }
                 rowerUser.value = response
             } catch (e: CancellationException) {
@@ -153,7 +162,7 @@ object FirebaseDataHolder {
 
         userJob.cancelingJob()
 
-        return rowerUser
+        callback(rowerUser)
     }
 
     fun updateRowerUser(newUser: RowerUser, isSuccessfully: (Boolean) -> Unit) {

@@ -1,11 +1,10 @@
 package ru.kirilldev.rowingutapp.application
 
 import android.app.Application
-import androidx.room.RoomDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import ru.kirilldev.rowingutapp.room.db.RowingDatabase
+import ru.kirilldev.rowingutapp.data.room.db.RowingDatabase
 
 class RowingutApplication : Application() {
 

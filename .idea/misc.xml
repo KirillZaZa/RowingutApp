@@ -33,6 +33,7 @@
         <entry key="app/src/main/res/drawable/ic_pages_2.xml" value="0.24351851851851852" />
         <entry key="app/src/main/res/drawable/ic_pages_3.xml" value="0.24351851851851852" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/activity_on_boarding.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_onboarding.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_registration.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_create_training.xml" value="0.25" />
@@ -44,6 +45,7 @@
         <entry key="app/src/main/res/layout/fragment_start_training.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_training.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_rating_user_position.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/on_boarding_bottombar.xml" value="0.12537993920972645" />
         <entry key="app/src/main/res/layout/onboarding_bottombar.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/training_snackbar.xml" value="0.24338805343128075" />
       </map>

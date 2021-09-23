@@ -7,9 +7,6 @@ import ru.kirilldev.rowingutapp.presentation.intro.SlideFragment
 
 class IntroViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
 
-
-
-
     override fun getItemCount(): Int  = 3
 
     override fun createFragment(position: Int): Fragment {

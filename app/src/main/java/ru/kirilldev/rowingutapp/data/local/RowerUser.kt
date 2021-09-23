@@ -10,12 +10,12 @@ import java.util.*
 )
 data class RowerUser(
 
-    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "rower_id")
     val id: String = UUID.randomUUID().toString(),
 
     val name: String? = null,
 
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "rower_email")
     val email: String? = null,
 

@@ -1,4 +1,4 @@
-package ru.kirilldev.rowingutapp.room.db
+package ru.kirilldev.rowingutapp.data.room.db
 
 import android.content.Context
 import androidx.room.Database
@@ -8,12 +8,11 @@ import kotlinx.coroutines.CoroutineScope
 import ru.kirilldev.rowingutapp.data.local.Racing
 import ru.kirilldev.rowingutapp.data.local.RowerUser
 import ru.kirilldev.rowingutapp.data.local.Training
-import ru.kirilldev.rowingutapp.room.dao.RacingDao
-import ru.kirilldev.rowingutapp.room.dao.RowerUserDao
-import ru.kirilldev.rowingutapp.room.dao.TrainingDao
-import ru.kirilldev.rowingutapp.room.callback.RowingDataBaseCallback
-import ru.kirilldev.rowingutapp.room.exception.DatabaseNotExistsException
-import kotlin.jvm.Throws
+import ru.kirilldev.rowingutapp.data.room.dao.RacingDao
+import ru.kirilldev.rowingutapp.data.room.dao.RowerUserDao
+import ru.kirilldev.rowingutapp.data.room.dao.TrainingDao
+import ru.kirilldev.rowingutapp.data.room.callback.RowingDataBaseCallback
+import ru.kirilldev.rowingutapp.data.room.exception.DatabaseNotExistsException
 
 
 @Database(

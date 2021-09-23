@@ -5,11 +5,11 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
-import ru.kirilldev.rowingutapp.api.firebase.storage.ImageStorage
+import ru.kirilldev.rowingutapp.data.firebase.storage.ImageStorage
 import ru.kirilldev.rowingutapp.data.local.RowerUser
 import ru.kirilldev.rowingutapp.data.remote.RowerRank
 import ru.kirilldev.rowingutapp.extensions.getSortedRowerRankList
-import ru.kirilldev.rowingutapp.repository.RowingutRepository
+import ru.kirilldev.rowingutapp.data.repository.RowingutRepository
 import ru.kirilldev.rowingutapp.viewmodels.base.BaseViewModel
 import ru.kirilldev.rowingutapp.viewmodels.interfaces.IRatingViewModel
 import java.lang.IllegalArgumentException

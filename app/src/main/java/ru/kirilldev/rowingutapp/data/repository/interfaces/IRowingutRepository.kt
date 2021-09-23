@@ -1,4 +1,4 @@
-package ru.kirilldev.rowingutapp.repository.interfaces
+package ru.kirilldev.rowingutapp.data.repository.interfaces
 
 import androidx.lifecycle.LiveData
 import ru.kirilldev.rowingutapp.data.local.Racing
@@ -7,6 +7,20 @@ import ru.kirilldev.rowingutapp.data.local.Training
 import ru.kirilldev.rowingutapp.data.remote.RowerRank
 
 interface IRowingutRepository {
+
+    fun signIn(email: String, password: String, callback: (String) -> Unit)
+
+    fun signUp(email: String, password: String, callback: (String) -> Unit)
+
+    fun isSignedIn(callback: (Boolean) -> Unit)
+
+    fun updateFirstEntry()
+
+    fun isFirstEntry(): Boolean
+
+    fun putRowerRank(rowerRank: RowerRank)
+
+    fun signOut(callback: (Unit) -> Unit)
 
     fun loadUserData(): LiveData<RowerUser?>
 
@@ -29,4 +43,5 @@ interface IRowingutRepository {
     fun loadRacing(date: String): LiveData<Racing?>
 
     fun deleteTraining(date: String, callback: (Boolean) -> Unit)
+
 }
