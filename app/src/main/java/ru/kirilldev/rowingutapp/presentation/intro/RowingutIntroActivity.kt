@@ -1,13 +1,17 @@
 package ru.kirilldev.rowingutapp.presentation.intro
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.core.view.size
 import androidx.fragment.app.FragmentActivity
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.kirilldev.rowingutapp.R
+import ru.kirilldev.rowingutapp.data.local.EntrySettings
 import ru.kirilldev.rowingutapp.databinding.ActivityOnBoardingBinding
 import ru.kirilldev.rowingutapp.presentation.intro.adapter.IntroViewPagerAdapter
+import ru.kirilldev.rowingutapp.presentation.registration.RegistrationActivity
 import ru.kirilldev.rowingutapp.viewmodels.ActivityOnBoardingData
 import ru.kirilldev.rowingutapp.viewmodels.OnBoardingViewModel
 import ru.kirilldev.rowingutapp.viewmodels.OnBoardingViewModelFactory
@@ -44,7 +48,6 @@ class RowingutIntroActivity : FragmentActivity(R.layout.activity_on_boarding),
             .adapter = introAdapter
 
         viewBinding.viewpager2.isUserInputEnabled = false
-
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -61,9 +64,21 @@ class RowingutIntroActivity : FragmentActivity(R.layout.activity_on_boarding),
         v ?: return
         when(v){
             vbBottombar.nextPageButton -> {
-                viewModel.handleCurrentPage(
-                    viewBinding.viewpager2.currentItem++
-                )
+                val currentItem = viewBinding.viewpager2.currentItem
+
+                if(currentItem == viewBinding.viewpager2.size){
+
+                    viewModel.handleEntrySettings(EntrySettings(
+                        isFirstEntry = false
+                    ))
+
+                    val intent = Intent(this, RegistrationActivity::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
+
+                }else viewModel.handleCurrentPage(
+                        currentItem.inc()
+                    )
             }
         }
     }

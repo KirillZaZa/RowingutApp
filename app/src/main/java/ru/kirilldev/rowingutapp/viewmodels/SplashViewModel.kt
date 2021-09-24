@@ -1,5 +1,6 @@
 package ru.kirilldev.rowingutapp.viewmodels
 
+import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.LiveData
@@ -14,20 +15,20 @@ import java.lang.IllegalArgumentException
 class SplashViewModel(savedStateHandle: SavedStateHandle) :
     BaseViewModel<EntrySettings>(EntrySettings(), savedStateHandle) {
 
-    init {
-        subscribeOnDataSource(getEntryInfo()){ entry, state->
-            entry ?: return@subscribeOnDataSource null
-            state.copy(
+    private val repository = RowingutRepository()
 
+
+    init {
+        subscribeOnDataSource(repository.getEntrySettings()){ entry, state->
+            state.copy(
+                isFirstEntry = entry.isFirstEntry,
+                isSignedIn = entry.isSignedIn
             )
         }
     }
 
-    private val repository = RowingutRepository()
 
-    private fun getEntryInfo(): LiveData<EntrySettings>{
 
-    }
 
 }
 

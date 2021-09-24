@@ -8,32 +8,31 @@ import java.io.Serializable
 data class Racing(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "racing_date")
-    val racingDate: String? = null,
+    var racingDate: String = "",
 
-    val racingPlace: String? = null,
+    var racingPlace: String? = null,
 
+    @ColumnInfo(name = "racing_meters")
+    var racingInfoMeters: Int? = 0,
 
-    @Embedded
-    val racingListInfo: List<RacingInfo>? = null,
+    @ColumnInfo(name = "racing_type")
+    var racingInfoType: String? = null,
 
 
     //for ui
     @Ignore
-    val openedItemIndex: Int? = null,
+    var openedItemIndex: Int? = null,
     @Ignore
-    val itemDate: String? = null,
+    var itemDate: String? = null,
     @Ignore
-    val itemRacings: List<RacingInfo>? = null
+    var itemRacings: List<RacingInfo>? = null
 
-): Serializable{
+)
 
-}
-
-@Entity(tableName = "racing_info")
 data class RacingInfo(
-    val racingInfoMeters: Int,
+    var racingInfoMeters: Int? = 0,
 
-    val racingInfoType: String
+    var racingInfoType: String? = null,
 ): Serializable{
 
 }

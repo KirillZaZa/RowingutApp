@@ -41,7 +41,7 @@ class SlideFragment: Fragment() {
                 0 -> R.layout.intro_page_1
                 1 -> R.layout.intro_page_2
                 2 -> R.layout.intro_page_3
-                else -> R.layout.intro_page_1
+                else -> return
             }
 
         }

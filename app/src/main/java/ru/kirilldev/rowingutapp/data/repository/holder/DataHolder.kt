@@ -22,7 +22,7 @@ object FirebaseDataHolder {
      */
 
     private const val FIREBASE_TAG = "firebase_tag"
-    private val scope = RowingutApplication.scope
+    private val scope = RowingutApplication.scope!!
     private val api = RetrofitInstance.api
 
 
@@ -233,8 +233,8 @@ object LocalDataHolder : ILocalHolder {
     private const val LOCAL_STORAGE_TAG = "local_storage_tag"
 
 
-    private val scope = RowingutApplication.scope
-    private val dataBase = RowingutApplication.database
+    private val scope = RowingutApplication.scope!!
+    private val dataBase = RowingutApplication.database!!
 
 
     private fun Job.cancellingJob() {

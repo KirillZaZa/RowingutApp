@@ -1,5 +1,7 @@
 package ru.kirilldev.rowingutapp.viewmodels.interfaces
 
+import ru.kirilldev.rowingutapp.data.local.EntrySettings
+
 
 interface IRegistrationViewModel {
 
@@ -10,6 +12,8 @@ interface IRegistrationViewModel {
     fun handlePage(position: Int)
 
     fun handleIsPasswordsEquals(password: String, confirmedPassword: String)
+
+    fun handleUpdateEntrySettings(entrySettings: EntrySettings)
 
 
 }

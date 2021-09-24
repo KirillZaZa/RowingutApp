@@ -2,6 +2,7 @@ package ru.kirilldev.rowingutapp.data.repository
 
 import androidx.lifecycle.LiveData
 import ru.kirilldev.rowingutapp.data.firebase.auth.Authentication
+import ru.kirilldev.rowingutapp.data.local.EntrySettings
 import ru.kirilldev.rowingutapp.data.local.Racing
 import ru.kirilldev.rowingutapp.data.local.RowerUser
 import ru.kirilldev.rowingutapp.data.local.Training
@@ -23,7 +24,6 @@ class RowingutRepository(
         auth.signIn(email, password){
             callback(it)
             // prefsManager -> isSignedIn -> true
-            // prefsManager -> userEmail -> _userMail@
         }
     }
 
@@ -31,24 +31,18 @@ class RowingutRepository(
         auth.signUp(email, password){
             callback(it)
             // prefsManager -> isSignedIn -> true
-            // prefsManager -> userEmail -> _userMail@
         }
     }
 
-    override fun isSignedIn(callback: (Boolean) -> Unit) {
-        // if user null -> prefsManager -> isSignedIn -> false
-        // not null -> prefsManager -> isSignedIn -> true
-        // callback(isSignedIn)
+
+
+    override fun updateEntrySettings(entrySettings: EntrySettings) {
+        prefsManager.isFirstEntry = entrySettings.isFirstEntry
+        prefsManager.isSignedIn = entrySettings.isSignedIn
     }
 
-    override fun updateFirstEntry() {
-        //prefsManager -> isFirstEntry = !isFirstEntry
-    }
+    override fun getEntrySettings(): LiveData<EntrySettings> = prefsManager.entrySettings
 
-    override fun isFirstEntry(): Boolean {
-        //prefsManager -> isFirstEntry
-        return false
-    }
 
     override fun putRowerRank(rowerRank: RowerRank) {
         firebase.putRowerRank(rowerRank)

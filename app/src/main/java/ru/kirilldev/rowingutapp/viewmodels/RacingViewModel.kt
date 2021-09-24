@@ -44,7 +44,6 @@ class RacingViewModel(savedStateHandle: SavedStateHandle) :
         updateState { it.copy(
             openedItemIndex = index,
             itemDate = racing.racingDate,
-            itemRacings = racing.racingListInfo
         )}
     }
 

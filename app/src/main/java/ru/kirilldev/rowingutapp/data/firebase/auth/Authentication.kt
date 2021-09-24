@@ -14,7 +14,7 @@ class Authentication {
 
     }
 
-    private val scope = RowingutApplication.scope
+    private val scope = RowingutApplication.scope!!
 
     private val auth by lazy {
         FirebaseAuth.getInstance()

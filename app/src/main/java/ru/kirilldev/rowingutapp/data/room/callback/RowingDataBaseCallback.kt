@@ -18,7 +18,7 @@ import java.util.*
 
 class RowingDataBaseCallback(
     private val database: RowingDatabase?,
-    private val scope: CoroutineScope = RowingutApplication.scope
+    private val scope: CoroutineScope = RowingutApplication.scope!!
 ) :
     RoomDatabase.Callback() {
 
@@ -75,7 +75,6 @@ class RowingDataBaseCallback(
     private fun createTestRacing() = Racing(
         racingDate = DateUtil.getDate(),
         racingPlace = "Стрела",
-        racingListInfo = listOf(RacingInfo(1000, "Командная"))
     )
 
     private fun createTestTraining() = Training(

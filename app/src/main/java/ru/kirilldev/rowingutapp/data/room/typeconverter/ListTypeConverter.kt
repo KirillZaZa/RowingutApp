@@ -6,9 +6,13 @@ import androidx.room.TypeConverter
 class ListTypeConverter {
 
     @TypeConverter
-    fun fromList(list: List<String>) = list.joinToString(",")
+    fun fromList(list: List<String>): String {
+        return list.joinToString(",")
+    }
 
     @TypeConverter
-    fun toList(str: String) = listOf(str)
+    fun toList(str: String): List<String> {
+        return listOf(str)
+    }
 
 }

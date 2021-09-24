@@ -23,8 +23,8 @@ import kotlin.random.Random
 class ImageStorage {
 
     private val storage = Firebase.storage
-    private val context = RowingutApplication.instance.applicationContext
-    private val scope = RowingutApplication.scope
+    private val context = RowingutApplication.applicationContext()
+    private val scope = RowingutApplication.scope!!
 
     companion object {
         private const val STORAGE_TAG = "storage_tag"

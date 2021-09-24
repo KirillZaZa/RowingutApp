@@ -5,6 +5,7 @@ import androidx.lifecycle.*
 import androidx.savedstate.SavedStateRegistryOwner
 import com.google.firebase.auth.FirebaseUser
 import ru.kirilldev.rowingutapp.data.firebase.auth.Authentication
+import ru.kirilldev.rowingutapp.data.local.EntrySettings
 import ru.kirilldev.rowingutapp.data.repository.RowingutRepository
 import ru.kirilldev.rowingutapp.extensions.checkPasswordLength
 import ru.kirilldev.rowingutapp.extensions.isPasswordValid
@@ -66,7 +67,11 @@ class RegistrationViewModel(savedStateHandle: SavedStateHandle) :
                 repository.signUp(email, password) {
 
                     notification = when (it) {
-                        email -> Notify.Success(it)
+                        email -> {
+
+                            Notify.Success(it)
+
+                        }
                         else -> Notify.Error(it)
                     }
 
@@ -83,6 +88,14 @@ class RegistrationViewModel(savedStateHandle: SavedStateHandle) :
 
     override fun handleIsPasswordsEquals(password: String, confirmedPassword: String) {
         notify(Notify.Error(ValidationNotifies.EmailValidationError().message))
+    }
+
+    override fun handleUpdateEntrySettings(entrySettings: EntrySettings) {
+        repository.updateEntrySettings(
+            EntrySettings(
+                isSignedIn = true
+            )
+        )
     }
 
 

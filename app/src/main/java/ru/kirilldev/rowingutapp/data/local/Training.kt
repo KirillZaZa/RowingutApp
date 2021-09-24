@@ -3,28 +3,26 @@ package ru.kirilldev.rowingutapp.data.local
 import androidx.room.*
 import ru.kirilldev.rowingutapp.data.room.typeconverter.ListTypeConverter
 
-
-@Entity(tableName = "training_table", indices = [Index(value = ["training_date"], unique = true)])
+@Entity(tableName = "training_table")
 data class Training(
 
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "training_date")
-    val trainingDate: String? = null,
+    val trainingDate: String,
 
-    @ColumnInfo(name = "name")
-    val trainingName: String? = null,
+    @ColumnInfo(name = "training_name")
+    val trainingName: String,
 
-    @ColumnInfo(name = "time")
-    val trainingTime: Float? = null,
+    @ColumnInfo(name = "training_time")
+    val trainingTime: Float? = 0f,
 
-    @ColumnInfo(name = "tasks")
-    @TypeConverters(ListTypeConverter::class)
-    val trainingTasks: List<String>? = emptyList(),
+    @field:TypeConverters(ListTypeConverter::class)
+    val trainingTasks: List<String> = listOf(),
 
-    @ColumnInfo(name = "type")
-    val trainingType: String? = null,
 
-    //fields needed for ui work
+    @ColumnInfo(name = "training_type")
+    val trainingType: String,
+
     @Ignore
     var isStarted: Boolean = false,
     @Ignore
