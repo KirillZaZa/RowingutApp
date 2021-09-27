@@ -19,10 +19,19 @@ class OnBoardingBottombar @JvmOverloads constructor(
     val binding
         get() = _binding
 
+
     init {
         View.inflate(context, R.layout.on_boarding_bottombar, this)
     }
 
+    fun setBottombarImage(page: Int){
+        when(page){
+            0 -> _binding.pages.setImageResource(R.drawable.ic_pages_1)
+            1 -> binding.pages.setImageResource(R.drawable.ic_pages_2)
+            2 -> binding.pages.setImageResource(R.drawable.ic_pages_3)
+            else -> return
+        }
+    }
 
 
 }

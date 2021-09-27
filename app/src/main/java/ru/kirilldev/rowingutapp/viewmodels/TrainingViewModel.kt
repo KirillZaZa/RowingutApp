@@ -58,7 +58,7 @@ class TrainingViewModel(savedStateHandle: SavedStateHandle) :
 
 
     override fun handleDeleteTraining(training: Training) {
-        repository.deleteTraining(training.trainingDate!!) { isSucceeded->
+        repository.deleteTraining(training) { isSucceeded->
             if(isSucceeded){
                 resetState()
             }

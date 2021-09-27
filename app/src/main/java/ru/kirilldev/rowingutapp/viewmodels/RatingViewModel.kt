@@ -16,6 +16,7 @@ import java.lang.IllegalArgumentException
 
 class RatingViewModel(savedStateHandle: SavedStateHandle) :
     BaseViewModel<RowerRank>(
+        RowerRank(),
         savedStateHandle = savedStateHandle,
     ), IRatingViewModel {
 
@@ -53,6 +54,7 @@ class RatingViewModel(savedStateHandle: SavedStateHandle) :
 
 
 }
+
 
 
 class RatingViewModelFactory(owner: SavedStateRegistryOwner)

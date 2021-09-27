@@ -31,13 +31,13 @@ class PrefManager(val context: Context = RowingutApplication.applicationContext(
 
     internal val scope = CoroutineScope(SupervisorJob() + errHandler)
 
-    var isFirstEntry by PrefDelegate(false)
+    var isFirstEntry by PrefDelegate(true)
 
     var isSignedIn by PrefDelegate(false)
 
     val entrySettings: LiveData<EntrySettings>
         get() {
-            val entry = dataStore.data.map { it[booleanPreferencesKey(this::isFirstEntry.name)] ?: false}
+            val entry = dataStore.data.map { it[booleanPreferencesKey(this::isFirstEntry.name)] ?: true}
             val signedIn = dataStore.data.map { it[booleanPreferencesKey(this::isSignedIn.name)] ?: false }
 
             return entry.zip(signedIn){ en, signed ->

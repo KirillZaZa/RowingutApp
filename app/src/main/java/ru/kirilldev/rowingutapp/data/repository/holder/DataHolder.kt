@@ -30,13 +30,13 @@ object FirebaseDataHolder {
         if (this.isCompleted) this.cancel()
     }
 
-    fun putRowerRank(rowerRank: RowerRank){
+    fun putRowerRank(rowerRank: RowerRank) {
         val job = scope.launch {
             try {
-                withContext(Dispatchers.IO){
+                withContext(Dispatchers.IO) {
                     api.putRowerRank(rowerRank)
                 }
-            }catch (e: CancellationException){
+            } catch (e: CancellationException) {
                 e.printError(FIREBASE_TAG)
             }
         }
@@ -60,12 +60,12 @@ object FirebaseDataHolder {
         callback(trainingLiveData)
     }
 
-    fun deleteTraining(date: String, isSuccessfully: (Boolean) -> Unit) {
+    fun deleteTraining(training: Training, isSuccessfully: (Boolean) -> Unit) {
         var success = false
         val job = scope.launch {
             success = try {
                 withContext(Dispatchers.IO) {
-                    api.deleteTodayTraining(date)
+                    api.deleteTodayTraining(training)
                 }
                 true
             } catch (e: CancellationException) {
@@ -145,7 +145,7 @@ object FirebaseDataHolder {
 
     }
 
-    fun getRowerUser(email: String, callback: (LiveData<RowerUser?>) -> Unit){
+    fun getRowerUser(email: String, callback: (LiveData<RowerUser?>) -> Unit) {
         val rowerUser = MutableLiveData<RowerUser?>()
         val userJob = scope.launch {
             try {
@@ -382,11 +382,11 @@ object LocalDataHolder : ILocalHolder {
         job.cancellingJob()
     }
 
-    override fun deleteTraining(date: String) {
+    override fun deleteTraining(training: Training) {
         val job = scope.launch {
             try {
                 withContext(Dispatchers.IO) {
-                    dataBase.getTrainingDao().deleteTraining(date)
+                    dataBase.getTrainingDao().deleteTraining(training)
                 }
             } catch (e: CancellationException) {
                 e.printError(LOCAL_STORAGE_TAG)

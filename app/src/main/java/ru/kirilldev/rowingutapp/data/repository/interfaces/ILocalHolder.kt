@@ -26,7 +26,7 @@ interface ILocalHolder {
 
     fun updateTraining(training: Training)
 
-    fun deleteTraining(date: String)
+    fun deleteTraining(training: Training)
 
     fun putRacingListData(racing: Racing)
 

@@ -118,11 +118,11 @@ class RowingutRepository(
         return db.getRacing(date)
     }
 
-    override fun deleteTraining(date: String, callback: (Boolean) -> Unit) {
+    override fun deleteTraining(training: Training, callback: (Boolean) -> Unit) {
         var success = false
-        firebase.deleteTraining(date) {
+        firebase.deleteTraining(training) {
             if(it){
-                db.deleteTraining(date)
+                db.deleteTraining(training)
                 success = true
             }
         }

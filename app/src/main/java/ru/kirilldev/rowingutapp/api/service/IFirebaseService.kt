@@ -40,8 +40,8 @@ interface IFirebaseService {
     @PUT("/documents/todayTraining/{date}")
     suspend fun updateTodayTraining(@Query("date")date: String)
 
-    @DELETE("documents/todayTraining/{date}")
-    suspend fun deleteTodayTraining(@Query("date")date: String)
+    @DELETE("documents/todayTraining/{training}")
+    suspend fun deleteTodayTraining(@Query("date")training: Training)
 
 
 

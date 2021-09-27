@@ -28,14 +28,17 @@
         <entry key="..\:/RowingutApp/app/src/main/res/layout/onboarding_bottombar.xml" value="0.25416666666666665" />
         <entry key="..\:/RowingutApp/app/src/main/res/layout/splash_screen.xml" value="0.25416666666666665" />
         <entry key="..\:/RowingutApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2703125" />
+        <entry key="app/src/main/res/drawable/cup_states.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/drawable/ic_home_icon_pressed.xml" value="0.24351851851851852" />
         <entry key="app/src/main/res/drawable/ic_pages_1.xml" value="0.24351851851851852" />
         <entry key="app/src/main/res/drawable/ic_pages_2.xml" value="0.24351851851851852" />
         <entry key="app/src/main/res/drawable/ic_pages_3.xml" value="0.24351851851851852" />
+        <entry key="app/src/main/res/drawable/reveal.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/drawable/shape_animated_bottombar.xml" value="0.16203703703703703" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/activity_on_boarding.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_onboarding.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.20996654961114405" />
         <entry key="app/src/main/res/layout/fragment_create_training.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_racings.xml" value="0.14628623188405798" />
@@ -44,7 +47,10 @@
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.14628623188405798" />
         <entry key="app/src/main/res/layout/fragment_start_training.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_training.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/intro_page_1.xml" value="0.15670289855072464" />
+        <entry key="app/src/main/res/layout/intro_page_3.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_rating_user_position.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/loading.xml" value="0.15670289855072464" />
         <entry key="app/src/main/res/layout/on_boarding_bottombar.xml" value="0.12537993920972645" />
         <entry key="app/src/main/res/layout/onboarding_bottombar.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/training_snackbar.xml" value="0.24338805343128075" />

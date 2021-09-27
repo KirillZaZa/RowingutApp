@@ -7,6 +7,7 @@ import ru.kirilldev.rowingutapp.data.local.EntrySettings
 import ru.kirilldev.rowingutapp.data.repository.RowingutRepository
 import ru.kirilldev.rowingutapp.viewmodels.base.BaseViewModel
 import ru.kirilldev.rowingutapp.viewmodels.interfaces.IOnBoardingViewModel
+import java.io.Serializable
 import java.lang.IllegalArgumentException
 
 class OnBoardingViewModel(savedStateHandle: SavedStateHandle) :
@@ -15,9 +16,10 @@ class OnBoardingViewModel(savedStateHandle: SavedStateHandle) :
         savedStateHandle
     ), IOnBoardingViewModel {
 
+    private val repository = RowingutRepository()
 
     init {
-        subscribeOnDataSource(getEntryInfo()) { entry, state ->
+        subscribeOnDataSource(repository.getEntrySettings()) { entry, state ->
             state.copy(
                 isFirstEntry = entry.isFirstEntry,
                 isSignedIn = entry.isSignedIn
@@ -25,17 +27,7 @@ class OnBoardingViewModel(savedStateHandle: SavedStateHandle) :
         }
     }
 
-    private val repository = RowingutRepository()
 
-    private fun getEntryInfo(): LiveData<ActivityOnBoardingData> {
-        val settings = repository.getEntrySettings().value
-        return MutableLiveData<ActivityOnBoardingData>().apply {
-            value = ActivityOnBoardingData(
-                isSignedIn = settings!!.isSignedIn,
-                isFirstEntry = settings.isFirstEntry
-            )
-        }
-    }
 
     override fun handleCurrentPage(page: Int) {
         updateState { it.copy(currentPage = page) }
@@ -43,12 +35,6 @@ class OnBoardingViewModel(savedStateHandle: SavedStateHandle) :
 
     override fun handleEntrySettings(entrySettings: EntrySettings) {
         repository.updateEntrySettings(entrySettings)
-        updateState {
-            it.copy(
-                isFirstEntry = entrySettings.isFirstEntry,
-                isSignedIn = entrySettings.isSignedIn
-            )
-        }
     }
 }
 
@@ -56,7 +42,7 @@ data class ActivityOnBoardingData(
     val currentPage: Int = 0,
     val isSignedIn: Boolean = false,
     val isFirstEntry: Boolean = false
-)
+): Serializable
 
 
 class OnBoardingViewModelFactory(

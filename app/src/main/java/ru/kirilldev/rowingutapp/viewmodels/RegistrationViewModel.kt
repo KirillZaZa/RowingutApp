@@ -124,7 +124,7 @@ data class RegistrationData(
     val password: String? = null
 )
 
-class ActivityRegistrationViewModelFactory(
+class RegistrationViewModelFactory(
     owner: SavedStateRegistryOwner
 ) : AbstractSavedStateViewModelFactory(owner, bundleOf()) {
     override fun <T : ViewModel?> create(

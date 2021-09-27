@@ -4,7 +4,7 @@ import androidx.annotation.UiThread
 import androidx.lifecycle.*
 
 abstract class BaseViewModel<T>(
-    initstate: T? = null,
+    initstate: T,
     private val savedStateHandle: SavedStateHandle,
     private val initListState: List<T> = emptyList()
 ) :
@@ -69,6 +69,7 @@ abstract class BaseViewModel<T>(
         state.value = restoredState
         listState.value = restoredListState
     }
+
 
     @UiThread
     protected inline fun updateState(update: (currentState: T) -> T?) {
